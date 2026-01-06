@@ -1,11 +1,6 @@
 import { useState } from "react";
 import Guest from "./Guest";
 
-type Person = {
-  name: string;
-  paid: boolean;
-};
-
 function GuestList() {
   const [guests, setGuests] = useState<Person[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
