@@ -9,7 +9,7 @@ function Guest({
   index: number;
   setGuests: Function;
 }) {
-  const [paid, setPaid] = useState(guest.paid);
+  const [paid, setPaid] = useState<boolean>(guest.paid);
 
   const setPaidOnObject: () => void = () => {
     guest.paid = !paid;
