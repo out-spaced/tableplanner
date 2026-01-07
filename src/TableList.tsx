@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Table from "./Table";
 
 function TableList({
+  guests,
   setGuests,
   removed,
   setRemoved,
@@ -47,6 +48,20 @@ function TableList({
       setRemoved(null);
     }
   }, [removed]);
+
+  useEffect(() => {
+    // update table when guest changes in guestlist
+    // not the best way to do this but it works for now
+    setTables((prev) =>
+      prev.map((table) => ({
+        ...table,
+        people: table.people.map((person) => {
+          const updatedGuest = guests.find((g) => g.index === person.index);
+          return updatedGuest || person;
+        }),
+      }))
+    );
+  }, [guests]);
 
   return (
     <div className="border rounded-md p-5 pt-2 mr-5">

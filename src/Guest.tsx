@@ -20,7 +20,7 @@ function Guest({
     setPaid((prev) => !prev);
     setGuests((prev: Person[]) => {
       const newGuests = [...prev];
-      newGuests[guest.index - 1].paid = guest.paid;
+      newGuests[guest.index - 1] = { ...guest, paid: !paid };
       return newGuests;
     });
   };
