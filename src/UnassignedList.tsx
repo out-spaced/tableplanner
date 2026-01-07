@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Seat from "./Seat";
+import UnassignedSeat from "./UnassignedSeat";
 
 function UnassignedList({ guests }: { guests: Person[] }) {
   const [unassigned, setUnassigned] = useState<Person[]>([]);
@@ -16,7 +16,7 @@ function UnassignedList({ guests }: { guests: Person[] }) {
       <div>
         <ul>
           {unassigned.map((guest, index) => (
-            <Seat key={index} guest={guest} />
+            <UnassignedSeat key={index} guest={guest} />
           ))}
         </ul>
       </div>

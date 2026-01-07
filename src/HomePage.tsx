@@ -7,7 +7,7 @@ function HomePage() {
   const [guests, setGuests] = useState<Person[]>([]);
   return (
     <div className="flex justify-center pt-16 pb-4">
-      <TableList />
+      <TableList setGuests={setGuests} />
       <UnassignedList guests={guests} />
       <GuestList guests={guests} setGuests={setGuests} />
     </div>

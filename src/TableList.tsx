@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Table from "./Table";
 
-function TableList() {
+function TableList({ setGuests }: { setGuests: Function }) {
   const [tables, setTables] = useState<Table[]>([]);
 
   const addTable = () => {
     setTables((prev) => [
       ...prev,
-      { index: tables.length, seats: 3, people: [] },
+      { index: tables.length + 1, seats: 3, people: [] },
     ]);
   };
 
@@ -22,7 +22,12 @@ function TableList() {
         </button>
       </div>
       {tables.map((table, index) => (
-        <Table key={index} table={table} />
+        <Table
+          key={index}
+          table={table}
+          setTables={setTables}
+          setGuests={setGuests}
+        />
       ))}
     </div>
   );

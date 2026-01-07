@@ -19,7 +19,13 @@ function GuestList({
     setError("");
     setGuests((prev: Person[]) => [
       ...prev,
-      { name: inputValue, paid: false, table: 0, seat: 0 },
+      {
+        index: prev.length + 1,
+        name: inputValue,
+        paid: false,
+        table: 0,
+        seat: 0,
+      },
     ]);
     setInputValue("");
   };

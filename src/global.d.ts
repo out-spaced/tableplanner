@@ -1,4 +1,5 @@
 interface Person {
+  index: number; // 1 indexed
   name: string;
   paid: boolean;
   table: number;
@@ -6,7 +7,7 @@ interface Person {
 };
 
 interface Table {
-  index: number;
+  index: number; // 1 indexed
   seats: number;
   people: Person[]
 };
