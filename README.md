@@ -1,6 +1,7 @@
 Plans tables (like, physical tables) and flags if they paid or not.
 
 todo:
+fix tablelist useeffect
 better styling
 ticket cost input field
 total sum collected display
