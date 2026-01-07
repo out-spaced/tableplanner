@@ -12,11 +12,12 @@ function TableList({
   setRemoved: Function;
 }) {
   const [tables, setTables] = useState<Table[]>([]);
+  const [tableSize, setTableSize] = useState<number>(6);
 
   const addTable = () => {
     setTables((prev) => [
       ...prev,
-      { index: tables.length + 1, seats: 3, people: [] },
+      { index: tables.length + 1, seats: tableSize, people: [] },
     ]);
   };
 
@@ -50,6 +51,16 @@ function TableList({
   return (
     <div className="border rounded-md p-5 pt-2 mr-5">
       <div>
+        <select
+          value={tableSize}
+          onChange={(e) => setTableSize(parseInt(e.target.value, 10))}
+        >
+          {Array.from({ length: 10 }).map((_, index) => (
+            <option key={index} value={index + 1}>
+              {index + 1}
+            </option>
+          ))}
+        </select>
         <button
           className="m-1 p-2 pt-1 pb-1 bg-green-500 rounded-sm shadow-gray-500 hover:shadow-md"
           onClick={() => addTable()}
