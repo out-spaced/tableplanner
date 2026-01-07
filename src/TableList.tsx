@@ -1,7 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Table from "./Table";
 
-function TableList({ setGuests }: { setGuests: Function }) {
+function TableList({
+  setGuests,
+  removed,
+  setRemoved,
+}: {
+  guests: Person[];
+  setGuests: Function;
+  removed: Person | null;
+  setRemoved: Function;
+}) {
   const [tables, setTables] = useState<Table[]>([]);
 
   const addTable = () => {
@@ -10,6 +19,33 @@ function TableList({ setGuests }: { setGuests: Function }) {
       { index: tables.length + 1, seats: 3, people: [] },
     ]);
   };
+
+  useEffect(() => {
+    if (removed) {
+      const removedTableNum: number = removed.table - 1;
+      const removedSeatNum: number = removed.seat;
+      const currentTable: Table = tables[removedTableNum];
+      const newPeople: Person[] = currentTable.people.filter(
+        (person) => person.seat !== removedSeatNum
+      );
+      // update seat numbers
+      newPeople.forEach((person) => {
+        if (person.seat > removedSeatNum) {
+          person.seat--;
+        }
+      });
+      const newTable: Table = {
+        ...currentTable,
+        people: newPeople,
+      };
+      setTables((prev) => {
+        const newTables: Table[] = [...prev];
+        newTables[removedTableNum] = newTable;
+        return newTables;
+      });
+      setRemoved(null);
+    }
+  }, [removed]);
 
   return (
     <div className="border rounded-md p-5 pt-2 mr-5">

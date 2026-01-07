@@ -4,10 +4,14 @@ function Guest({
   guest,
   index,
   setGuests,
+  removed,
+  setRemoved,
 }: {
   guest: Person;
   index: number;
   setGuests: Function;
+  removed: Person | null;
+  setRemoved: Function;
 }) {
   const [paid, setPaid] = useState<boolean>(guest.paid);
 
@@ -18,6 +22,7 @@ function Guest({
 
   const removeSelf: () => void = () => {
     setGuests((prev: Person[]) => prev.filter((_, i) => i !== index));
+    setRemoved(guest);
   };
 
   return (
@@ -36,6 +41,7 @@ function Guest({
         </button>
         <button
           className="m-1 p-2 pt-1 pb-1 bg-amber-500 rounded-sm shadow-gray-500 hover:shadow-md"
+          disabled={!!removed}
           onClick={() => removeSelf()}
         >
           Remove

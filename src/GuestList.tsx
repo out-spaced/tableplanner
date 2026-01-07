@@ -4,9 +4,13 @@ import Guest from "./Guest";
 function GuestList({
   guests,
   setGuests,
+  removed,
+  setRemoved,
 }: {
   guests: Person[];
   setGuests: Function;
+  removed: Person | null;
+  setRemoved: Function;
 }) {
   const [inputValue, setInputValue] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -60,6 +64,8 @@ function GuestList({
               guest={guest}
               index={index}
               setGuests={setGuests}
+              removed={removed}
+              setRemoved={setRemoved}
             />
           ))}
         </ul>
