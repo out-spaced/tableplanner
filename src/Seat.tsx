@@ -1,5 +1,5 @@
-function Seat({ person }: { person: Person }) {
-  return <li>{person.name}</li>;
+function Seat({ guest }: { guest: Person }) {
+  return <li>{guest.name}</li>;
 }
 
 export default Seat;
