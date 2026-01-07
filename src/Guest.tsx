@@ -18,6 +18,11 @@ function Guest({
   const setPaidOnObject: () => void = () => {
     guest.paid = !paid;
     setPaid((prev) => !prev);
+    setGuests((prev: Person[]) => {
+      const newGuests = [...prev];
+      newGuests[guest.index - 1].paid = guest.paid;
+      return newGuests;
+    });
   };
 
   const removeSelf: () => void = () => {
