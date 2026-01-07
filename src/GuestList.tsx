@@ -12,7 +12,10 @@ function GuestList() {
       return;
     }
     setError("");
-    setGuests((prev) => [...prev, { name: inputValue, paid: false }]);
+    setGuests((prev) => [
+      ...prev,
+      { name: inputValue, paid: false, table: 0, seat: 0 },
+    ]);
     setInputValue("");
   }
 
