@@ -1,13 +1,8 @@
-import { useEffect } from "react";
-
 function UnassignedSeat({ guest }: { guest: Person }) {
   const handleDragStart = (e: React.DragEvent<HTMLLIElement>) => {
     e.dataTransfer.setData("text", JSON.stringify(guest));
     e.dataTransfer.effectAllowed = "move";
   };
-  useEffect(() => {
-    // nothing
-  }, [guest.paid]);
 
   return (
     <li
