@@ -1,5 +1,5 @@
 function Seat({ guest }: { guest: Person }) {
-  return <li>{guest.name}</li>;
+  return <li className="border rounded-md">{guest.name}</li>;
 }
 
 export default Seat;
