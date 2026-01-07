@@ -5,6 +5,7 @@ fix tablelist useeffect
 better styling
 ticket cost input field
 total sum collected display
-drag from table -> unassigned
+drag from table to unassigned
+drag from table to another table
 save data to localstorage or firebase
 confirmation for removal
