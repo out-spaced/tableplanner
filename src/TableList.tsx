@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Table from "./Table";
 
-export default function TableList() {
+function TableList() {
   const [tables, setTables] = useState<Table[]>([]);
 
   const addTable = () => {
@@ -27,3 +27,5 @@ export default function TableList() {
     </div>
   );
 }
+
+export default TableList;

@@ -3,7 +3,7 @@ import GuestList from "./GuestList";
 import TableList from "./TableList";
 import UnassignedList from "./UnassignedList";
 
-export default function HomePage() {
+function HomePage() {
   const [guests, setGuests] = useState<Person[]>([]);
   return (
     <div className="flex justify-center pt-16 pb-4">
@@ -13,3 +13,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default HomePage;

@@ -11,7 +11,7 @@ function GuestList({
   const [inputValue, setInputValue] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  function addGuest() {
+  const addGuest = () => {
     if (inputValue.length < 3) {
       setError("Name must be at least 3 characters long");
       return;
@@ -22,7 +22,7 @@ function GuestList({
       { name: inputValue, paid: false, table: 0, seat: 0 },
     ]);
     setInputValue("");
-  }
+  };
 
   return (
     <div className="border rounded-md pl-5 pr-5 pt-2 pb-5">
