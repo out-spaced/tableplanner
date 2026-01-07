@@ -1,8 +1,13 @@
 import { useState } from "react";
 import Guest from "./Guest";
 
-function GuestList() {
-  const [guests, setGuests] = useState<Person[]>([]);
+function GuestList({
+  guests,
+  setGuests,
+}: {
+  guests: Person[];
+  setGuests: Function;
+}) {
   const [inputValue, setInputValue] = useState<string>("");
   const [error, setError] = useState<string>("");
 
@@ -12,7 +17,7 @@ function GuestList() {
       return;
     }
     setError("");
-    setGuests((prev) => [
+    setGuests((prev: Person[]) => [
       ...prev,
       { name: inputValue, paid: false, table: 0, seat: 0 },
     ]);
