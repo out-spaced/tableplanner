@@ -17,3 +17,5 @@ drag from table to another table
 save data to localstorage or firebase
 
 confirmation for removal
+
+show name list alphabetically
