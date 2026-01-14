@@ -2,7 +2,7 @@ Plans tables (like, physical tables) and flags if they paid or not.
 
 todo:
 
-fix tablelist useeffect
+fix multiple additions
 
 better styling
 
@@ -19,3 +19,5 @@ save data to localstorage or firebase
 confirmation for removal
 
 show name list alphabetically
+
+prevent multiple clicks of remove button
