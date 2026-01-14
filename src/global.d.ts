@@ -5,7 +5,7 @@ interface Person {
   table: number; // 0 is unassigned table
   seat: number;  // 1-indexed
   next: Person | null;
-  prev: Person | null;
+  prev: Table | Person | null;
 };
 
 interface Table {

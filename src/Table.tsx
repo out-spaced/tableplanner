@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Seat from "./Seat";
-import { insertGuest } from "./utils";
+import { insertGuest, removeGuestByIndex } from "./utils";
 
 function Table({ table, setGuests }: { table: Table; setGuests: Function }) {
   const [seatList, setSeatList] = useState<Person[]>([]);
@@ -19,10 +19,13 @@ function Table({ table, setGuests }: { table: Table; setGuests: Function }) {
     const data = e.dataTransfer.getData("text");
     const guest = JSON.parse(data);
     if (!tableIsFull()) {
-      const newTable = insertGuest(guest, table);
       setGuests((prev: Table[]) => {
+        const oldTableIndex = guest.table;
+        removeGuestByIndex(guest.index, prev[oldTableIndex]);
+        insertGuest(guest, table);
         const newGuests = [...prev];
-        newGuests[table.index] = newTable;
+        newGuests[table.index] = { ...prev[table.index] };
+        newGuests[oldTableIndex] = { ...prev[oldTableIndex] };
         return newGuests;
       });
     } else {

@@ -31,9 +31,10 @@ function GuestList({
         next: null,
         prev: null,
       };
-      const newTable = insertGuest(newGuest, prev[0]);
+      insertGuest(newGuest, prev[0]);
       const newGuests = [...prev];
-      newGuests[0] = newTable;
+      newGuests[0] = { ...prev[0] };
+      newGuests[0].seatsOccupied++;
       return newGuests;
     });
     setInputValue("");

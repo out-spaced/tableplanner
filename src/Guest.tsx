@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { findGuest, removeGuestByIndex } from "./utils";
 
 function Guest({
@@ -29,10 +28,8 @@ function Guest({
   const removeSelf: () => void = () => {
     //setGuests((prev: Person[]) => prev.filter((_, i) => i !== index));
     setGuests((prev: Table[]) => {
-      const newTable = removeGuestByIndex(
-        guestInfo.index,
-        prev[guestInfo.table]
-      );
+      removeGuestByIndex(guestInfo.index, prev[guestInfo.table]);
+      const newTable = { ...prev[guestInfo.table] };
       const newGuests = [...prev];
       newGuests[guestInfo.table] = newTable;
       return newGuests;
