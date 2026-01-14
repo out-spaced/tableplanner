@@ -22,7 +22,6 @@ function GuestList({
     }
     setError("");
     setGuests((prev: Table[]) => {
-      const newGuests = [...prev];
       const newGuest: Person = {
         index: guestIndexCount,
         name: inputValue,
@@ -32,7 +31,8 @@ function GuestList({
         next: null,
         prev: null,
       };
-      const newTable = insertGuest(newGuest, newGuests[0]);
+      const newTable = insertGuest(newGuest, prev[0]);
+      const newGuests = [...prev];
       newGuests[0] = newTable;
       return newGuests;
     });
