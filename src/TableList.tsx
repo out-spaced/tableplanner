@@ -1,67 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { createTable } from "./utils";
 import Table from "./Table";
 
 function TableList({
   guests,
   setGuests,
-  removed,
-  setRemoved,
 }: {
-  guests: Person[];
+  guests: Table[];
   setGuests: Function;
-  removed: Person | null;
-  setRemoved: Function;
 }) {
-  const [tables, setTables] = useState<Table[]>([]);
   const [tableSize, setTableSize] = useState<number>(6);
 
   const addTable = () => {
-    setTables((prev) => [
-      ...prev,
-      { index: tables.length + 1, seats: tableSize, people: [] },
-    ]);
+    const newTable = createTable(guests.length, tableSize);
+    setGuests((prev: Table[]) => [...prev, newTable]);
   };
-
-  useEffect(() => {
-    if (removed) {
-      const removedTableNum: number = removed.table - 1;
-      const removedSeatNum: number = removed.seat;
-      const currentTable: Table = tables[removedTableNum];
-      const newPeople: Person[] = currentTable.people.filter(
-        (person) => person.seat !== removedSeatNum
-      );
-      // update seat numbers
-      newPeople.forEach((person) => {
-        if (person.seat > removedSeatNum) {
-          person.seat--;
-        }
-      });
-      const newTable: Table = {
-        ...currentTable,
-        people: newPeople,
-      };
-      setTables((prev) => {
-        const newTables: Table[] = [...prev];
-        newTables[removedTableNum] = newTable;
-        return newTables;
-      });
-      setRemoved(null);
-    }
-  }, [removed]);
-
-  useEffect(() => {
-    // update table when guest changes in guestlist
-    // not the best way to do this but it works for now
-    setTables((prev) =>
-      prev.map((table) => ({
-        ...table,
-        people: table.people.map((person) => {
-          const updatedGuest = guests.find((g) => g.index === person.index);
-          return updatedGuest || person;
-        }),
-      }))
-    );
-  }, [guests]);
 
   return (
     <div className="border rounded-md p-5 pt-2 mr-5">
@@ -83,13 +36,8 @@ function TableList({
           Add
         </button>
       </div>
-      {tables.map((table, index) => (
-        <Table
-          key={index}
-          table={table}
-          setTables={setTables}
-          setGuests={setGuests}
-        />
+      {guests.slice(1).map((table, index) => (
+        <Table key={index} table={table} setGuests={setGuests} />
       ))}
     </div>
   );

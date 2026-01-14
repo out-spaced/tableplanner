@@ -1,21 +1,17 @@
+import { useState, useEffect } from "react";
 import Seat from "./Seat";
+import { insertGuest } from "./utils";
 
-function Table({
-  table,
-  setTables,
-  setGuests,
-}: {
-  table: Table;
-  setTables: Function;
-  setGuests: Function;
-}) {
+function Table({ table, setGuests }: { table: Table; setGuests: Function }) {
+  const [seatList, setSeatList] = useState<Person[]>([]);
+
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
   };
 
   const tableIsFull = () => {
-    return table.people.length === table.seats;
+    return table.seatsOccupied >= table.seats;
   };
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -23,26 +19,26 @@ function Table({
     const data = e.dataTransfer.getData("text");
     const guest = JSON.parse(data);
     if (!tableIsFull()) {
-      // set table here
-      const newPeople = [...table.people, guest];
-      const newTable = { ...table, people: newPeople };
-      setTables((prev: Table[]) => {
-        // must be inserted into the same location
-        const newTables = [...prev];
-        newTables[table.index - 1] = newTable;
-        return newTables;
-      });
-      setGuests((prev: Person[]) => {
+      const newTable = insertGuest(guest, table);
+      setGuests((prev: Table[]) => {
         const newGuests = [...prev];
-        newGuests[guest.index - 1] = {
-          ...guest,
-          table: table.index,
-          seat: table.people.length,
-        };
+        newGuests[table.index] = newTable;
         return newGuests;
       });
+    } else {
+      // todo: add error for table being full
     }
   };
+
+  useEffect(() => {
+    let seatPtr = table.next;
+    const seats: Person[] = [];
+    while (seatPtr != null) {
+      seats.push(seatPtr);
+      seatPtr = seatPtr.next;
+    }
+    setSeatList(seats);
+  }, [table]);
 
   return (
     <div
@@ -52,10 +48,10 @@ function Table({
     >
       <h3>Table {table.index}</h3>
       <ul>
-        {table.people.map((guest, index) => (
+        {seatList.map((guest, index) => (
           <Seat key={index} guest={guest} />
         ))}
-        {Array.from({ length: table.seats - table.people.length }).map(
+        {Array.from({ length: table.seats - table.seatsOccupied }).map(
           (_, index) => (
             <Seat
               key={index}
@@ -65,6 +61,8 @@ function Table({
                 table: 0,
                 seat: 0,
                 index: 0,
+                next: null,
+                prev: null,
               }}
             />
           )
