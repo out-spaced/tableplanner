@@ -7,26 +7,38 @@ const createTable = (index: number, seats: number): Table => {
   }
 }
 
-const getLastInTable = (tableHead: Table): Person | Table=> {
-  let last: Person | Table = tableHead;
+const getLastInTable = (table: Table): Person | Table=> {
+  let last: Person | Table = table;
   while (last.next != null) {
     last = last.next;
   }
   return last;
 }
 
-const insertGuest = (guest: Person, tableHead: Table): Table => {
+const insertGuest = (guest: Person, table: Table): Table => {
   // size check not done here, should be done before calling
-  const last = getLastInTable(tableHead);
+  const last = getLastInTable(table);
   last.next = guest;
-  tableHead.seatsOccupied++;
-  guest.table = tableHead.index;
-  guest.seat = tableHead.seatsOccupied;
-  return {...tableHead}; // is this necessary?
+  table.seatsOccupied++;
+  guest.table = table.index;
+  guest.seat = table.seatsOccupied;
+  return {...table}; // is this necessary?
 }
 
-const removePersonFromTable = (tableHead: Table) : Table => {
-  return {...tableHead};
+const removeGuestByIndex = (guestIndex: number, table: Table) : Table => {
+    //todo: implement
+  return {...table};
 } 
 
-export { createTable, insertGuest, removePersonFromTable, getLastInTable};
+const findGuest = (guestIndex: number, table: Table): Person | null => {
+    let ptr = table.next;
+    while (ptr != null) {
+        if (ptr.index === guestIndex) {
+            break;
+        }
+        ptr = ptr.next;
+    }
+    return ptr;
+}
+
+export { createTable, insertGuest, removeGuestByIndex, getLastInTable, findGuest};

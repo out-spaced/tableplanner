@@ -1,14 +1,17 @@
 interface Person {
-  index: number; // 1 indexed
+  index: number; 
   name: string;
   paid: boolean;
-  table: number;
-  seat: number;
+  table: number; // 0 is unassigned table
+  seat: number;  // 1-indexed
+  next: Person | null;
+  prev: Person | null;
 };
 
 interface Table {
-  index: number; // 1 indexed
+  index: number; // 0 is unassigned table
   seats: number;
-  people: Person[]
+  seatsOccupied: number;
+  next: Person | null;
 };
 

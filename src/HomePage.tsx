@@ -5,7 +5,7 @@ import UnassignedList from "./UnassignedList";
 
 function HomePage() {
   const [guests, setGuests] = useState<Table[]>([
-    { index: 0, seats: 500, seatsOccupied: 0, next: null }, //create unassigned table
+    { index: 0, seats: 5000, seatsOccupied: 0, next: null }, //create unassigned table
   ]);
 
   return (

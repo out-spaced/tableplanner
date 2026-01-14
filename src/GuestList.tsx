@@ -1,38 +1,56 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { insertGuest } from "./utils";
 import Guest from "./Guest";
 
 function GuestList({
   guests,
   setGuests,
-  removed,
-  setRemoved,
 }: {
-  guests: Person[];
+  guests: Table[];
   setGuests: Function;
-  removed: Person | null;
-  setRemoved: Function;
 }) {
+  const [allGuests, setAllGuests] = useState<Person[]>([]);
+  const [guestIndexCount, setGuestIndexCount] = useState<number>(0);
   const [inputValue, setInputValue] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   const addGuest = () => {
+    // todo: check if name is unique before adding
     if (inputValue.length < 3) {
       setError("Name must be at least 3 characters long");
       return;
     }
     setError("");
-    setGuests((prev: Person[]) => [
-      ...prev,
-      {
-        index: prev.length + 1,
+    setGuests((prev: Table[]) => {
+      const newGuests = [...prev];
+      const newGuest: Person = {
+        index: guestIndexCount,
         name: inputValue,
         paid: false,
         table: 0,
         seat: 0,
-      },
-    ]);
+        next: null,
+        prev: null,
+      };
+      const newTable = insertGuest(newGuest, newGuests[0]);
+      newGuests[0] = newTable;
+      return newGuests;
+    });
     setInputValue("");
+    setGuestIndexCount((prev) => prev + 1);
   };
+
+  useEffect(() => {
+    const newAllGuests: Person[] = [];
+    guests.forEach((table) => {
+      let ptr = table.next;
+      while (ptr != null) {
+        allGuests.push(ptr);
+        ptr = ptr.next;
+      }
+    });
+    setAllGuests(newAllGuests);
+  }, [guests]);
 
   return (
     <div className="border rounded-md pl-5 pr-5 pt-2 pb-5">
@@ -58,14 +76,12 @@ function GuestList({
       )}
       <div>
         <ul>
-          {guests.map((guest, index) => (
+          {allGuests.map((guest, index) => (
             <Guest
               key={index}
-              guest={guest}
+              guestInfo={guest}
               index={index}
               setGuests={setGuests}
-              removed={removed}
-              setRemoved={setRemoved}
             />
           ))}
         </ul>

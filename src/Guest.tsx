@@ -1,52 +1,61 @@
 import { useState } from "react";
+import { findGuest, removeGuestByIndex } from "./utils";
 
 function Guest({
-  guest,
+  guestInfo,
   index,
   setGuests,
-  removed,
-  setRemoved,
 }: {
-  guest: Person;
+  guestInfo: Person;
   index: number;
   setGuests: Function;
-  removed: Person | null;
-  setRemoved: Function;
 }) {
-  const [paid, setPaid] = useState<boolean>(guest.paid);
+  //const [paid, setPaid] = useState<boolean>(guestInfo.paid);
 
   const setPaidOnObject: () => void = () => {
-    guest.paid = !paid;
-    setPaid((prev) => !prev);
-    setGuests((prev: Person[]) => {
+    //setPaid((prev) => !prev); redundant
+    setGuests((prev: Table[]) => {
+      const guestObj = findGuest(guestInfo.index, prev[guestInfo.table]);
+      if (guestObj != null) {
+        guestObj.paid = !guestObj.paid;
+      }
+      const newTable = { ...prev[guestInfo.table] };
       const newGuests = [...prev];
-      newGuests[guest.index - 1] = { ...guest, paid: !paid };
+      newGuests[guestInfo.table] = newTable;
       return newGuests;
     });
   };
 
   const removeSelf: () => void = () => {
-    setGuests((prev: Person[]) => prev.filter((_, i) => i !== index));
-    setRemoved(guest);
+    //setGuests((prev: Person[]) => prev.filter((_, i) => i !== index));
+    setGuests((prev: Table[]) => {
+      const newTable = removeGuestByIndex(
+        guestInfo.index,
+        prev[guestInfo.table]
+      );
+      const newGuests = [...prev];
+      newGuests[guestInfo.table] = newTable;
+      return newGuests;
+    });
   };
 
   return (
     <li>
       <div>
-        {guest.name} {index}
+        {guestInfo.name} {index}
       </div>
       <div>
         <button
           className={`${
-            paid ? "bg-green-400" : "bg-red-400"
+            guestInfo.paid ? "bg-green-400" : "bg-red-400"
           } m-1 p-2 pt-1 pb-1 shadow-gray-500 hover:shadow-md`}
           onClick={() => setPaidOnObject()}
         >
-          {paid ? "Paid" : "Not Paid"}
+          {guestInfo.paid ? "Paid" : "Not Paid"}
         </button>
         <button
           className="m-1 p-2 pt-1 pb-1 bg-amber-500 rounded-sm shadow-gray-500 hover:shadow-md"
-          disabled={!!removed}
+          // disabled={!!removed} todo: function of this must be replaced somehow
           onClick={() => removeSelf()}
         >
           Remove
