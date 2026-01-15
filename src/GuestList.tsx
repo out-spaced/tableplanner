@@ -15,7 +15,6 @@ function GuestList({
   const [error, setError] = useState<string>("");
 
   const addGuest = () => {
-    // todo: check if name is unique before adding
     if (inputValue.length < 3) {
       setError("Name must be at least 3 characters long");
       return;
