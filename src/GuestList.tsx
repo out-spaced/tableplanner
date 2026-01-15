@@ -38,6 +38,7 @@ function GuestList({
         ptr = ptr.next;
       }
     });
+    newAllGuests.sort((a, b) => a.name.localeCompare(b.name));
     setAllGuests(newAllGuests);
   }, [guests]);
 
