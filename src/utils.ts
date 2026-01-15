@@ -62,4 +62,4 @@ const findGuest = (guestIndex: number, table: Table): Person | null => {
     return ptr;
 }
 
-export { createTable, insertGuest, insertNewGuest, removeGuestByIndex, getLastInTable, findGuest};
+export { insertGuest, insertNewGuest, removeGuestByIndex, getLastInTable, findGuest};
