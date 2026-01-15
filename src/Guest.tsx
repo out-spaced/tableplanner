@@ -9,10 +9,7 @@ function Guest({
   guests: Table[];
   setGuests: Function;
 }) {
-  //const [paid, setPaid] = useState<boolean>(guestInfo.paid);
-
   const setPaidOnObject: () => void = () => {
-    //setPaid((prev) => !prev); redundant
     const guestObj = findGuest(guestInfo.index, guests[guestInfo.table]);
     if (guestObj == null) {
       return;
