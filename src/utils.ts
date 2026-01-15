@@ -1,12 +1,3 @@
-const createTable = (index: number, seats: number): Table => {
-  return {
-    index,
-    seats,
-    seatsOccupied: 0,
-    next: null,
-  }
-}
-
 const getLastInTable = (table: Table): Person | Table=> {
   let last: Person | Table = table;
   while (last.next != null) {

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { createTable } from "./utils";
 import Table from "./Table";
 
 function TableList({
@@ -10,6 +9,15 @@ function TableList({
   setGuests: Function;
 }) {
   const [tableSize, setTableSize] = useState<number>(6);
+
+  const createTable = (index: number, seats: number): Table => {
+    return {
+      index,
+      seats,
+      seatsOccupied: 0,
+      next: null,
+    };
+  };
 
   const addTable = () => {
     const newTable = createTable(guests.length, tableSize);
