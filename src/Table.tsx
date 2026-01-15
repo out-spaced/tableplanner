@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Seat from "./Seat";
+import EmptySeat from "./EmptySeat";
 import { findGuest, insertGuest, removeGuestByIndex } from "./utils";
 
 function Table({
@@ -65,13 +66,7 @@ function Table({
         ))}
         {Array.from({ length: table.seats - table.seatsOccupied }).map(
           (_, index) => (
-            <Seat
-              key={index}
-              guest={{
-                name: "empty",
-                paid: false,
-              }}
-            />
+            <EmptySeat key={index} />
           )
         )}
       </ul>

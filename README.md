@@ -10,8 +10,6 @@ total sum collected display
 
 drag from table to unassigned
 
-drag from table to another table
-
 save data to localstorage or firebase
 
 confirmation for removal

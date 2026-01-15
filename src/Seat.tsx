@@ -1,8 +1,16 @@
-function Seat({ guest }: { guest: Person | EmptyPerson }) {
-  if (guest.name == "empty")
-    return <li className="border rounded-md">empty</li>;
+function Seat({ guest }: { guest: Person }) {
+  const handleDragStart = (e: React.DragEvent<HTMLLIElement>) => {
+    e.dataTransfer.setData(
+      "text",
+      JSON.stringify({ index: guest.index, table: guest.table })
+    );
+    e.dataTransfer.effectAllowed = "move";
+  };
+
   return (
     <li
+      draggable="true"
+      onDragStart={handleDragStart}
       className={`
         ${guest.paid ? "bg-green-400" : "bg-red-400"}
         border rounded-md`}
