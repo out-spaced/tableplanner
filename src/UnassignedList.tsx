@@ -5,15 +5,13 @@ function UnassignedList({ unassignedHead }: { unassignedHead: Table }) {
   const [unassigned, setUnassigned] = useState<Person[]>([]);
 
   useEffect(() => {
-    setUnassigned(() => {
-      let ptr = unassignedHead.next;
-      const newUnassigned: Person[] = [];
-      while (ptr != null) {
-        newUnassigned.push(ptr);
-        ptr = ptr.next;
-      }
-      return newUnassigned;
-    });
+    let ptr = unassignedHead.next;
+    const newUnassigned: Person[] = [];
+    while (ptr != null) {
+      newUnassigned.push(ptr);
+      ptr = ptr.next;
+    }
+    setUnassigned(newUnassigned);
   }, [unassignedHead]);
 
   return (
