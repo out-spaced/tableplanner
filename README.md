@@ -21,3 +21,5 @@ error boundary
 error for full table
 
 export/import csv function
+
+add reset all button
