@@ -21,3 +21,5 @@ export/import csv function
 add reset all button
 
 check if name is unique before adding
+
+add remove table button
