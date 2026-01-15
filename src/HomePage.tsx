@@ -11,7 +11,11 @@ function HomePage() {
   return (
     <div className="flex justify-center pt-16 pb-4">
       <TableList guests={guests} setGuests={setGuests} />
-      <UnassignedList unassignedHead={guests[0]} />
+      <UnassignedList
+        guests={guests}
+        setGuests={setGuests}
+        unassignedHead={guests[0]}
+      />
       <GuestList guests={guests} setGuests={setGuests} />
     </div>
   );

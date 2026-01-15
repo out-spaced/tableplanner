@@ -8,8 +8,6 @@ ticket cost input field
 
 total sum collected display
 
-drag from table to unassigned
-
 save data to localstorage or firebase
 
 confirmation for removal
