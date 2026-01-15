@@ -23,22 +23,19 @@ function GuestList({
     setError("");
     setInputValue("");
     setGuestIndexCount((prev) => prev + 1);
-    setGuests((prev: Table[]) => {
-      const newGuest: Person = {
-        index: guestIndexCount,
-        name: inputValue,
-        paid: false,
-        table: 0,
-        seat: 0,
-        next: null,
-        prev: null,
-      };
-      insertGuest(newGuest, prev[0]);
-      const newGuests = [...prev];
-      newGuests[0] = { ...prev[0] };
-      newGuests[0].seatsOccupied++;
-      return newGuests;
-    });
+    const newGuest: Person = {
+      index: guestIndexCount,
+      name: inputValue,
+      paid: false,
+      table: 0,
+      seat: 0,
+      next: null,
+      prev: null,
+    };
+    const newGuests = [...guests];
+    newGuests[0] = { ...guests[0] };
+    insertGuest(newGuest, newGuests[0]);
+    setGuests(newGuests);
   };
 
   useEffect(() => {
