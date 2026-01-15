@@ -48,7 +48,6 @@ function Guest({
         </button>
         <button
           className="m-1 p-2 pt-1 pb-1 bg-amber-500 rounded-sm shadow-gray-500 hover:shadow-md"
-          // disabled={!!removed} todo: function of this must be replaced somehow
           onClick={() => removeSelf()}
         >
           Remove
