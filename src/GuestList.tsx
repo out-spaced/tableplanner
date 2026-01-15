@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { insertGuest } from "./utils";
+import { insertNewGuest } from "./utils";
 import Guest from "./Guest";
 
 function GuestList({
@@ -23,18 +23,9 @@ function GuestList({
     setError("");
     setInputValue("");
     setGuestIndexCount((prev) => prev + 1);
-    const newGuest: Person = {
-      index: guestIndexCount,
-      name: inputValue,
-      paid: false,
-      table: 0,
-      seat: 0,
-      next: null,
-      prev: null,
-    };
     const newGuests = [...guests];
     newGuests[0] = { ...guests[0] };
-    insertGuest(newGuest, newGuests[0]);
+    insertNewGuest(guestIndexCount, inputValue, newGuests[0]);
     setGuests(newGuests);
   };
 
