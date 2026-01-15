@@ -2,36 +2,34 @@ import { findGuest, removeGuestByIndex } from "./utils";
 
 function Guest({
   guestInfo,
+  guests,
   setGuests,
 }: {
   guestInfo: Person;
+  guests: Table[];
   setGuests: Function;
 }) {
   //const [paid, setPaid] = useState<boolean>(guestInfo.paid);
 
   const setPaidOnObject: () => void = () => {
     //setPaid((prev) => !prev); redundant
-    setGuests((prev: Table[]) => {
-      const guestObj = findGuest(guestInfo.index, prev[guestInfo.table]);
-      if (guestObj != null) {
-        guestObj.paid = !guestObj.paid;
-      }
-      const newTable = { ...prev[guestInfo.table] };
-      const newGuests = [...prev];
-      newGuests[guestInfo.table] = newTable;
-      return newGuests;
-    });
+    const guestObj = findGuest(guestInfo.index, guests[guestInfo.table]);
+    if (guestObj == null) {
+      return;
+    }
+    guestObj.paid = !guestObj.paid;
+    const newTable = { ...guests[guestInfo.table] };
+    const newGuests = [...guests];
+    newGuests[guestInfo.table] = newTable;
+    setGuests(newGuests);
   };
 
   const removeSelf: () => void = () => {
-    //setGuests((prev: Person[]) => prev.filter((_, i) => i !== index));
-    setGuests((prev: Table[]) => {
-      removeGuestByIndex(guestInfo.index, prev[guestInfo.table]);
-      const newTable = { ...prev[guestInfo.table] };
-      const newGuests = [...prev];
-      newGuests[guestInfo.table] = newTable;
-      return newGuests;
-    });
+    removeGuestByIndex(guestInfo.index, guests[guestInfo.table]);
+    const newTable = { ...guests[guestInfo.table] };
+    const newGuests = [...guests];
+    newGuests[guestInfo.table] = newTable;
+    setGuests(newGuests);
   };
 
   return (

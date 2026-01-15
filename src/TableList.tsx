@@ -37,7 +37,12 @@ function TableList({
         </button>
       </div>
       {guests.slice(1).map((table, index) => (
-        <Table key={index} table={table} setGuests={setGuests} />
+        <Table
+          key={index}
+          table={table}
+          guests={guests}
+          setGuests={setGuests}
+        />
       ))}
     </div>
   );

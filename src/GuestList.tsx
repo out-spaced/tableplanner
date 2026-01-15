@@ -74,8 +74,13 @@ function GuestList({
       )}
       <div>
         <ul>
-          {allGuests.map((guest, index) => (
-            <Guest key={index} guestInfo={guest} setGuests={setGuests} />
+          {allGuests.map((guest) => (
+            <Guest
+              key={guest.index}
+              guestInfo={guest}
+              guests={guests}
+              setGuests={setGuests}
+            />
           ))}
         </ul>
       </div>
