@@ -21,6 +21,8 @@ function GuestList({
       return;
     }
     setError("");
+    setInputValue("");
+    setGuestIndexCount((prev) => prev + 1);
     setGuests((prev: Table[]) => {
       const newGuest: Person = {
         index: guestIndexCount,
@@ -37,8 +39,6 @@ function GuestList({
       newGuests[0].seatsOccupied++;
       return newGuests;
     });
-    setInputValue("");
-    setGuestIndexCount((prev) => prev + 1);
   };
 
   useEffect(() => {
@@ -46,7 +46,7 @@ function GuestList({
     guests.forEach((table) => {
       let ptr = table.next;
       while (ptr != null) {
-        allGuests.push(ptr);
+        newAllGuests.push(ptr);
         ptr = ptr.next;
       }
     });
@@ -78,12 +78,7 @@ function GuestList({
       <div>
         <ul>
           {allGuests.map((guest, index) => (
-            <Guest
-              key={index}
-              guestInfo={guest}
-              index={index}
-              setGuests={setGuests}
-            />
+            <Guest key={index} guestInfo={guest} setGuests={setGuests} />
           ))}
         </ul>
       </div>

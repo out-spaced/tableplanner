@@ -2,11 +2,9 @@ import { findGuest, removeGuestByIndex } from "./utils";
 
 function Guest({
   guestInfo,
-  index,
   setGuests,
 }: {
   guestInfo: Person;
-  index: number;
   setGuests: Function;
 }) {
   //const [paid, setPaid] = useState<boolean>(guestInfo.paid);
@@ -39,7 +37,7 @@ function Guest({
   return (
     <li>
       <div>
-        {guestInfo.name} {index}
+        {guestInfo.name} {guestInfo.index}
       </div>
       <div>
         <button
