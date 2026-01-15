@@ -23,7 +23,7 @@ const insertGuest = (guest: Person, table: Table): void => {
   guest.table = table.index;
   guest.seat = table.seatsOccupied;
   guest.prev = last;
-  //return {...table}; // is this necessary?
+  guest.next = null;
 }
 
 const insertNewGuest = (guestIndexCount: number, name: string, table: Table): void => {
@@ -35,16 +35,13 @@ const insertNewGuest = (guestIndexCount: number, name: string, table: Table): vo
     name: name,
     paid: false,
     table: table.index,
-    seat: table.seatsOccupied, // this makes no sense
+    seat: table.seatsOccupied, 
     next: null,
     prev: last,
   };
   last.next = newGuest;
   table.seatsOccupied++;
 }
-
-
-
 
 const removeGuestByIndex = (guestIndex: number, table: Table) : void => {
     const guest = findGuest(guestIndex, table);

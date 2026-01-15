@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Seat from "./Seat";
-import { insertGuest, removeGuestByIndex } from "./utils";
+import { findGuest, insertGuest, removeGuestByIndex } from "./utils";
 
 function Table({
   table,
@@ -25,16 +25,17 @@ function Table({
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData("text");
-    const guest = JSON.parse(data);
+    const dragData = JSON.parse(data);
     if (!tableIsFull()) {
-      const oldTableIndex = guest.table;
-      removeGuestByIndex(guest.index, guests[oldTableIndex]);
-      //findguest() here
-      // todo: change data transfered by drag
-      insertGuest(guest, table);
+      const movedGuest = findGuest(dragData.index, guests[dragData.table]);
+      if (movedGuest == null) return;
+      removeGuestByIndex(dragData.index, guests[dragData.table]);
+      const oldTable = { ...guests[dragData.table] };
+      insertGuest(movedGuest, table);
+      const newTable = { ...guests[table.index] };
       const newGuests = [...guests];
-      newGuests[table.index] = { ...guests[table.index] };
-      newGuests[oldTableIndex] = { ...guests[oldTableIndex] };
+      newGuests[table.index] = newTable;
+      newGuests[dragData.table] = oldTable;
       setGuests(newGuests);
     } else {
       // todo: add error for table being full
