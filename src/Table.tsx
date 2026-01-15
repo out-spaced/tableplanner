@@ -69,11 +69,6 @@ function Table({
               guest={{
                 name: "empty",
                 paid: false,
-                table: 0,
-                seat: 0,
-                index: 0,
-                next: null,
-                prev: null,
               }}
             />
           )

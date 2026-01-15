@@ -1,4 +1,4 @@
-function Seat({ guest }: { guest: Person }) {
+function Seat({ guest }: { guest: Person | EmptyPerson }) {
   if (guest.name == "empty")
     return <li className="border rounded-md">empty</li>;
   return (

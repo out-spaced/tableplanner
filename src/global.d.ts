@@ -8,6 +8,11 @@ interface Person {
   prev: Table | Person;
 };
 
+interface EmptyPerson {
+  name: string;
+  paid: boolean;
+};
+
 interface Table {
   index: number; // 0 is unassigned table
   seats: number;
