@@ -2,8 +2,6 @@ Plans tables (like, physical tables) and flags if they paid or not.
 
 todo:
 
-add remove table button
-
 export/import csv function
 
 check if name is unique before adding
