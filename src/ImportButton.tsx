@@ -1,8 +1,22 @@
 function ImportButton({ setTables }: { setTables: Function }) {
+  // save format:
+  // ['table', index, seats, seatsOccupied]
+  // ['guest', index, name, paid, table]
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // do something
+  };
   return (
-    <button className="m-1 p-2 pt-1 pb-1 bg-blue-300 rounded-sm shadow-gray-500 hover:shadow-md">
+    <label className="m-1 p-2 pt-1 pb-1 bg-blue-300 rounded-sm shadow-gray-500 hover:shadow-md">
       Import
-    </button>
+      <input
+        type="file"
+        id="fileInput"
+        accept=".csv"
+        className="hidden"
+        // value="test"
+        onChange={handleFileChange}
+      />
+    </label>
   );
 }
 
