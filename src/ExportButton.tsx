@@ -1,32 +1,36 @@
 import { useState, useEffect } from "react";
-import { CSVLink } from "react-csv";
 
 function ExportButton({ tables }: { tables: Table[] }) {
-  const [data, setData] = useState<(string | number | boolean)[][]>([]);
-  // save format:
-  // ['table', index, seats, seatsOccupied]
-  // ['guest', index, name, paid, table]
+  const [data, setData] = useState<string>("");
+
   useEffect(() => {
-    const newData: (string | number | boolean)[][] = [];
-    tables.forEach((table) => {
-      newData.push(["table", table.index, table.seats, table.seatsOccupied]);
-      let ptr = table.next;
-      while (ptr != null) {
-        newData.push(["guest", ptr.index, ptr.name, ptr.paid, ptr.table]);
-        ptr = ptr.next;
-      }
-    });
-    setData(newData);
+    setData(
+      JSON.stringify(tables, (key, value) => {
+        if (key === "prev") return undefined;
+        return value;
+      })
+    );
   }, [tables]);
 
+  const handleDownload = () => {
+    const blob = new Blob([data], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "tableplanner.txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
-    <CSVLink
-      data={data}
-      filename={"table-planner.csv"}
+    <button
+      onClick={handleDownload}
       className="m-1 p-2 pt-1 pb-1 bg-blue-300 rounded-sm shadow-gray-500 hover:shadow-md"
     >
       Export
-    </CSVLink>
+    </button>
   );
 }
 
