@@ -23,6 +23,19 @@ function Table({
     return table.seatsOccupied >= table.seats;
   };
 
+  const removeTable = () => {
+    const newGuests = [...guests];
+    newGuests[0] = { ...guests[0] };
+    let ptr = table.next;
+    while (ptr != null) {
+      const next = ptr.next;
+      insertGuest(ptr, newGuests[0]);
+      ptr = next;
+    }
+    newGuests.splice(table.index, 1);
+    setGuests(newGuests);
+  };
+
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData("text");
@@ -70,6 +83,12 @@ function Table({
           )
         )}
       </ul>
+      <button
+        onClick={() => removeTable()}
+        className="m-1 p-2 pt-1 pb-1 bg-amber-500 rounded-sm shadow-gray-500 hover:shadow-md"
+      >
+        Remove
+      </button>
     </div>
   );
 }

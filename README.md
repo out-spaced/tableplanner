@@ -2,7 +2,11 @@ Plans tables (like, physical tables) and flags if they paid or not.
 
 todo:
 
-add styling
+add remove table button
+
+export/import csv function
+
+check if name is unique before adding
 
 ticket cost input field
 
@@ -12,14 +16,10 @@ save data to localstorage or firebase
 
 confirmation for removal
 
-error boundary
-
 error for full table
 
-export/import csv function
+error boundary
 
 add reset all button
 
-check if name is unique before adding
-
-add remove table button
+add styling
