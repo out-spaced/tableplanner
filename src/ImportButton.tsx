@@ -20,7 +20,6 @@ function ImportButton({ setTables }: { setTables: Function }) {
         // err.target.error.name
       };
 
-      // Read the file content as text
       reader.readAsText(file);
     } else {
       // todo: set error state and show in ui
