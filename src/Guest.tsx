@@ -2,31 +2,31 @@ import { findGuest, removeGuestByIndex } from "./utils";
 
 function Guest({
   guestInfo,
-  guests,
-  setGuests,
+  tables,
+  setTables,
 }: {
   guestInfo: Person;
-  guests: Table[];
-  setGuests: Function;
+  tables: Table[];
+  setTables: Function;
 }) {
   const setPaidOnObject: () => void = () => {
-    const guestObj = findGuest(guestInfo.index, guests[guestInfo.table]);
+    const guestObj = findGuest(guestInfo.index, tables[guestInfo.table]);
     if (guestObj == null) {
       return;
     }
     guestObj.paid = !guestObj.paid;
-    const newTable = { ...guests[guestInfo.table] };
-    const newGuests = [...guests];
-    newGuests[guestInfo.table] = newTable;
-    setGuests(newGuests);
+    const newTable = { ...tables[guestInfo.table] };
+    const newTables = [...tables];
+    newTables[guestInfo.table] = newTable;
+    setTables(newTables);
   };
 
   const removeSelf: () => void = () => {
-    removeGuestByIndex(guestInfo.index, guests[guestInfo.table]);
-    const newTable = { ...guests[guestInfo.table] };
-    const newGuests = [...guests];
-    newGuests[guestInfo.table] = newTable;
-    setGuests(newGuests);
+    removeGuestByIndex(guestInfo.index, tables[guestInfo.table]);
+    const newTable = { ...tables[guestInfo.table] };
+    const newTables = [...tables];
+    newTables[guestInfo.table] = newTable;
+    setTables(newTables);
   };
 
   return (

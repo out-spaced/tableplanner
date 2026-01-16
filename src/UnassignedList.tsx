@@ -4,12 +4,12 @@ import { findGuest, insertGuest, removeGuestByIndex } from "./utils";
 
 function UnassignedList({
   unassignedHead,
-  guests,
-  setGuests,
+  tables,
+  setTables,
 }: {
   unassignedHead: Table;
-  guests: Table[];
-  setGuests: Function;
+  tables: Table[];
+  setTables: Function;
 }) {
   const [unassigned, setUnassigned] = useState<Person[]>([]);
 
@@ -18,16 +18,16 @@ function UnassignedList({
     const data = e.dataTransfer.getData("text");
     const dragData = JSON.parse(data);
 
-    const movedGuest = findGuest(dragData.index, guests[dragData.table]);
+    const movedGuest = findGuest(dragData.index, tables[dragData.table]);
     if (movedGuest == null) return;
-    removeGuestByIndex(dragData.index, guests[dragData.table]);
-    const oldTable = { ...guests[dragData.table] };
-    insertGuest(movedGuest, guests[0]);
-    const newTable = { ...guests[0] };
-    const newGuests = [...guests];
-    newGuests[0] = newTable;
-    newGuests[dragData.table] = oldTable;
-    setGuests(newGuests);
+    removeGuestByIndex(dragData.index, tables[dragData.table]);
+    const oldTable = { ...tables[dragData.table] };
+    insertGuest(movedGuest, tables[0]);
+    const newTable = { ...tables[0] };
+    const newTables = [...tables];
+    newTables[0] = newTable;
+    newTables[dragData.table] = oldTable;
+    setTables(newTables);
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {

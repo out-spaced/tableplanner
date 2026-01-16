@@ -3,11 +3,11 @@ import { insertNewGuest } from "./utils";
 import Guest from "./Guest";
 
 function GuestList({
-  guests,
-  setGuests,
+  tables,
+  setTables,
 }: {
-  guests: Table[];
-  setGuests: Function;
+  tables: Table[];
+  setTables: Function;
 }) {
   const [allGuests, setAllGuests] = useState<Person[]>([]);
   const [guestIndexCount, setGuestIndexCount] = useState<number>(0);
@@ -22,15 +22,15 @@ function GuestList({
     setError("");
     setInputValue("");
     setGuestIndexCount((prev) => prev + 1);
-    const newGuests = [...guests];
-    newGuests[0] = { ...guests[0] };
-    insertNewGuest(guestIndexCount, inputValue, newGuests[0]);
-    setGuests(newGuests);
+    const newTables = [...tables];
+    newTables[0] = { ...tables[0] };
+    insertNewGuest(guestIndexCount, inputValue, newTables[0]);
+    setTables(newTables);
   };
 
   useEffect(() => {
     const newAllGuests: Person[] = [];
-    guests.forEach((table) => {
+    tables.forEach((table) => {
       let ptr = table.next;
       while (ptr != null) {
         newAllGuests.push(ptr);
@@ -39,7 +39,7 @@ function GuestList({
     });
     newAllGuests.sort((a, b) => a.name.localeCompare(b.name));
     setAllGuests(newAllGuests);
-  }, [guests]);
+  }, [tables]);
 
   return (
     <div className="border rounded-md pl-5 pr-5 pt-2 pb-5">
@@ -69,8 +69,8 @@ function GuestList({
             <Guest
               key={guest.index}
               guestInfo={guest}
-              guests={guests}
-              setGuests={setGuests}
+              tables={tables}
+              setTables={setTables}
             />
           ))}
         </ul>

@@ -4,19 +4,19 @@ import TableList from "./TableList";
 import UnassignedList from "./UnassignedList";
 
 function HomePage() {
-  const [guests, setGuests] = useState<Table[]>([
+  const [tables, setTables] = useState<Table[]>([
     { index: 0, seats: 5000, seatsOccupied: 0, next: null }, //create unassigned table
   ]);
 
   return (
     <div className="flex justify-center pt-16 pb-4">
-      <TableList guests={guests} setGuests={setGuests} />
+      <TableList tables={tables} setTables={setTables} />
       <UnassignedList
-        guests={guests}
-        setGuests={setGuests}
-        unassignedHead={guests[0]}
+        tables={tables}
+        setTables={setTables}
+        unassignedHead={tables[0]}
       />
-      <GuestList guests={guests} setGuests={setGuests} />
+      <GuestList tables={tables} setTables={setTables} />
     </div>
   );
 }

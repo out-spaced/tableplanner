@@ -2,11 +2,11 @@ import { useState } from "react";
 import Table from "./Table";
 
 function TableList({
-  guests,
-  setGuests,
+  tables,
+  setTables,
 }: {
-  guests: Table[];
-  setGuests: Function;
+  tables: Table[];
+  setTables: Function;
 }) {
   const [tableSize, setTableSize] = useState<number>(6);
 
@@ -20,8 +20,8 @@ function TableList({
   };
 
   const addTable = () => {
-    const newTable = createTable(guests.length, tableSize);
-    setGuests((prev: Table[]) => [...prev, newTable]);
+    const newTable = createTable(tables.length, tableSize);
+    setTables((prev: Table[]) => [...prev, newTable]);
   };
 
   return (
@@ -44,12 +44,12 @@ function TableList({
           Add
         </button>
       </div>
-      {guests.slice(1).map((table, index) => (
+      {tables.slice(1).map((table, index) => (
         <Table
           key={index}
           table={table}
-          guests={guests}
-          setGuests={setGuests}
+          tables={tables}
+          setTables={setTables}
         />
       ))}
     </div>

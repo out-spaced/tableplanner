@@ -5,12 +5,12 @@ import { findGuest, insertGuest, removeGuestByIndex } from "./utils";
 
 function Table({
   table,
-  guests,
-  setGuests,
+  tables,
+  setTables,
 }: {
   table: Table;
-  guests: Table[];
-  setGuests: Function;
+  tables: Table[];
+  setTables: Function;
 }) {
   const [seatList, setSeatList] = useState<Person[]>([]);
 
@@ -24,27 +24,27 @@ function Table({
   };
 
   const removeTable = () => {
-    const newGuests = [...guests];
-    newGuests[0] = { ...guests[0] };
+    const newTables = [...tables];
+    newTables[0] = { ...tables[0] };
     let ptr = table.next;
     while (ptr != null) {
       const next = ptr.next;
-      insertGuest(ptr, newGuests[0]);
+      insertGuest(ptr, newTables[0]);
       ptr = next;
     }
-    const currentTableIndex = guests.indexOf(table);
+    const currentTableIndex = tables.indexOf(table);
     if (currentTableIndex > -1) {
-      newGuests.splice(currentTableIndex, 1);
-      for (let i = currentTableIndex; i < newGuests.length; i++) {
-        newGuests[i] = { ...newGuests[i], index: i };
-        let guestPtr = newGuests[i].next;
+      newTables.splice(currentTableIndex, 1);
+      for (let i = currentTableIndex; i < newTables.length; i++) {
+        newTables[i] = { ...newTables[i], index: i };
+        let guestPtr = newTables[i].next;
         while (guestPtr != null) {
           guestPtr.table = i;
           guestPtr = guestPtr.next;
         }
       }
     }
-    setGuests(newGuests);
+    setTables(newTables);
   };
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -52,16 +52,16 @@ function Table({
     const data = e.dataTransfer.getData("text");
     const dragData = JSON.parse(data);
     if (!tableIsFull()) {
-      const movedGuest = findGuest(dragData.index, guests[dragData.table]);
+      const movedGuest = findGuest(dragData.index, tables[dragData.table]);
       if (movedGuest == null) return;
-      removeGuestByIndex(dragData.index, guests[dragData.table]);
-      const oldTable = { ...guests[dragData.table] };
+      removeGuestByIndex(dragData.index, tables[dragData.table]);
+      const oldTable = { ...tables[dragData.table] };
       insertGuest(movedGuest, table);
-      const newTable = { ...guests[table.index] };
-      const newGuests = [...guests];
-      newGuests[table.index] = newTable;
-      newGuests[dragData.table] = oldTable;
-      setGuests(newGuests);
+      const newTable = { ...tables[table.index] };
+      const newTables = [...tables];
+      newTables[table.index] = newTable;
+      newTables[dragData.table] = oldTable;
+      setTables(newTables);
     } else {
       // todo: add error for table being full
     }
