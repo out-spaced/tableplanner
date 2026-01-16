@@ -2,22 +2,18 @@ Plans tables (like, physical tables) and flags if they paid or not.
 
 todo:
 
-export/import csv function
-
 check if name is unique before adding
 
 ticket cost input field
 
 total sum collected display
 
-save data to localstorage or firebase
+create google login / save data to firebase
 
 confirmation for removal
 
 error for full table
 
 error boundary
-
-add reset all button
 
 add styling
