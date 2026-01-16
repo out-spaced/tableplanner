@@ -24,6 +24,11 @@ function Table({
   };
 
   const removeTable = () => {
+<<<<<<< HEAD
+=======
+    // start with tablehead
+
+>>>>>>> 2771bf560fbc67828a0151a95d6f67ae33e0c45d
     const newGuests = [...guests];
     newGuests[0] = { ...guests[0] };
     let ptr = table.next;
@@ -32,6 +37,7 @@ function Table({
       insertGuest(ptr, newGuests[0]);
       ptr = next;
     }
+<<<<<<< HEAD
     const currentTableIndex = guests.indexOf(table);
     if (currentTableIndex > -1) {
       newGuests.splice(currentTableIndex, 1);
@@ -44,6 +50,9 @@ function Table({
         }
       }
     }
+=======
+    newGuests.splice(table.index, 1);
+>>>>>>> 2771bf560fbc67828a0151a95d6f67ae33e0c45d
     setGuests(newGuests);
   };
 
