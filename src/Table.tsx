@@ -32,7 +32,18 @@ function Table({
       insertGuest(ptr, newGuests[0]);
       ptr = next;
     }
-    newGuests.splice(table.index, 1);
+    const currentTableIndex = guests.indexOf(table);
+    if (currentTableIndex > -1) {
+      newGuests.splice(currentTableIndex, 1);
+      for (let i = currentTableIndex; i < newGuests.length; i++) {
+        newGuests[i] = { ...newGuests[i], index: i };
+        let guestPtr = newGuests[i].next;
+        while (guestPtr != null) {
+          guestPtr.table = i;
+          guestPtr = guestPtr.next;
+        }
+      }
+    }
     setGuests(newGuests);
   };
 
