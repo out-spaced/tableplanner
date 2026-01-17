@@ -4,6 +4,8 @@ todo:
 
 check if name is unique before adding
 
+add styling
+
 ticket cost input field
 
 total sum collected display
@@ -15,5 +17,3 @@ confirmation for removal
 error for full table
 
 error boundary
-
-add styling
