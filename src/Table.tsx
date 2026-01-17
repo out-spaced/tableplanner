@@ -81,7 +81,7 @@ function Table({
     <div
       onDragOver={handleDragOver}
       onDrop={handleDrop}
-      className="border rounded-md p-1"
+      className="border rounded-md border-dashed p-1"
     >
       <div className="flex justify-between">
         <h3>Table {table.index}</h3>
