@@ -25,7 +25,7 @@ function TableList({
   };
 
   return (
-    <div className="border rounded-md p-5 pt-2 mr-5">
+    <div className="border rounded-md p-5 pt-2">
       <div>
         <select
           value={tableSize}
@@ -45,6 +45,7 @@ function TableList({
         </button>
       </div>
       <div className="grid grid-cols-2 gap-1">
+        {/* w-[283px] h-[600px] overflow-y-auto */}
         {tables.slice(1).map((table, index) => (
           <Table
             key={index}

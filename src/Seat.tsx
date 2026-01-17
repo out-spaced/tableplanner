@@ -2,7 +2,7 @@ function Seat({ guest }: { guest: Person }) {
   const handleDragStart = (e: React.DragEvent<HTMLLIElement>) => {
     e.dataTransfer.setData(
       "text",
-      JSON.stringify({ index: guest.index, table: guest.table })
+      JSON.stringify({ index: guest.index, table: guest.table }),
     );
     e.dataTransfer.effectAllowed = "move";
   };
@@ -12,10 +12,11 @@ function Seat({ guest }: { guest: Person }) {
       draggable="true"
       onDragStart={handleDragStart}
       className={`
+        text-xs
         ${guest.paid ? "bg-green-400" : "bg-red-400"}
-        border rounded-md`}
+        border rounded-md flex justify-center items-center text-center`}
     >
-      {guest.name}
+      <div>{guest.name}</div>
     </li>
   );
 }
