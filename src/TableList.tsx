@@ -44,8 +44,8 @@ function TableList({
           Add
         </button>
       </div>
-      <div className="grid grid-cols-2 gap-1">
-        {/* w-[283px] h-[600px] overflow-y-auto */}
+      <div className="grid grid-cols-2 gap-1 w-[500px]">
+        {/*overflow-y-auto */}
         {tables.slice(1).map((table, index) => (
           <Table
             key={index}
