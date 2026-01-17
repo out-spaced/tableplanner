@@ -25,12 +25,14 @@ function HomePage() {
           unassignedHead={tables[0]}
         />
         <TableList tables={tables} setTables={setTables} />
-        <GuestList tables={tables} setTables={setTables} />
-        <div className="border rounded-md">
-          <h2> Actions </h2>
-          <ImportButton setTables={setTables} />
-          <ExportButton tables={tables} />
-          <ResetButton setTables={setTables} />
+        <div>
+          <div className="border rounded-md">
+            <h2> Actions </h2>
+            <ImportButton setTables={setTables} />
+            <ExportButton tables={tables} />
+            <ResetButton setTables={setTables} />
+          </div>
+          <GuestList tables={tables} setTables={setTables} />
         </div>
       </div>
     </div>
