@@ -83,23 +83,38 @@ function Table({
       onDrop={handleDrop}
       className="border rounded-md p-5 pt-2 mr-5"
     >
-      <h3>Table {table.index}</h3>
-      <ul>
-        {seatList.map((guest, index) => (
-          <Seat key={index} guest={guest} />
-        ))}
-        {Array.from({ length: table.seats - table.seatsOccupied }).map(
-          (_, index) => (
-            <EmptySeat key={index} />
-          )
-        )}
-      </ul>
-      <button
-        onClick={() => removeTable()}
-        className="m-1 p-2 pt-1 pb-1 bg-amber-500 rounded-sm shadow-gray-500 hover:shadow-md"
-      >
-        Remove
-      </button>
+      <div>
+        <h3>Table {table.index}</h3>
+        <button
+          onClick={() => removeTable()}
+          className="text-gray-500 rounded-sm transition-colors hover:text-red-500 hover:bg-gray-100"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+      <div>
+        <ul className="grid grid-cols-2 gap-1 mt-2">
+          {seatList.map((guest, index) => (
+            <Seat key={index} guest={guest} />
+          ))}
+          {Array.from({ length: table.seats - table.seatsOccupied }).map(
+            (_, index) => (
+              <EmptySeat key={index} />
+            ),
+          )}
+        </ul>
+      </div>
     </div>
   );
 }

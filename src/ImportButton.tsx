@@ -15,6 +15,8 @@ function ImportButton({ setTables }: { setTables: Function }) {
       reader.onerror = (err) => {
         // set error state and show in ui
         // err.target.error.name
+        alert(`Error reading file: ${err.target?.error?.name}`);
+        // temp solution
       };
 
       reader.readAsText(file);

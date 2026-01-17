@@ -13,18 +13,17 @@ function HomePage() {
 
   return (
     <div className="flex justify-center pt-16 pb-4">
-      <div>
-        <ImportButton setTables={setTables} />
-        <ExportButton tables={tables} />
-      </div>
-      <TableList tables={tables} setTables={setTables} />
       <UnassignedList
         tables={tables}
         setTables={setTables}
         unassignedHead={tables[0]}
       />
+      <TableList tables={tables} setTables={setTables} />
       <GuestList tables={tables} setTables={setTables} />
       <div>
+        <h2> Actions </h2>
+        <ImportButton setTables={setTables} />
+        <ExportButton tables={tables} />
         <ResetButton setTables={setTables} />
       </div>
     </div>
