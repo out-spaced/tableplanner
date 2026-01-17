@@ -1,7 +1,4 @@
 function ImportButton({ setTables }: { setTables: Function }) {
-  // save format:
-  // ['table', index, seats, seatsOccupied]
-  // ['guest', index, name, paid, table]
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     const file = e.target.files[0];
