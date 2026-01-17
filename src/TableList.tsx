@@ -25,7 +25,7 @@ function TableList({
   };
 
   return (
-    <div className="border rounded-md p-5 pt-2">
+    <div className="border rounded-md p-2">
       <div>
         <select
           value={tableSize}
