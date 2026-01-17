@@ -17,3 +17,7 @@ confirmation for removal
 error for full table
 
 error boundary
+
+lock/unlock tables button
+
+lock/unlock guests button
