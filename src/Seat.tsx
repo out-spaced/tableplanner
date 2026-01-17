@@ -13,7 +13,7 @@ function Seat({ guest }: { guest: Person }) {
       onDragStart={handleDragStart}
       className={`
         text-xs
-        ${guest.paid ? "bg-green-400" : "bg-red-400"}
+        ${guest.paid ? "bg-green-300" : "bg-red-300"}
         border rounded-md flex justify-center items-center text-center`}
     >
       <div>{guest.name}</div>
