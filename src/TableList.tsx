@@ -44,14 +44,16 @@ function TableList({
           Add
         </button>
       </div>
-      {tables.slice(1).map((table, index) => (
-        <Table
-          key={index}
-          table={table}
-          tables={tables}
-          setTables={setTables}
-        />
-      ))}
+      <div className="grid grid-cols-2 gap-1">
+        {tables.slice(1).map((table, index) => (
+          <Table
+            key={index}
+            table={table}
+            tables={tables}
+            setTables={setTables}
+          />
+        ))}
+      </div>
     </div>
   );
 }
