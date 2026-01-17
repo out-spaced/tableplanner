@@ -87,7 +87,7 @@ function Table({
         <h3>Table {table.index}</h3>
         <button
           onClick={() => removeTable()}
-          className="text-gray-500 rounded-sm transition-colors hover:text-red-500 hover:bg-gray-100"
+          className="text-gray-500 rounded-sm transition-colors hover:text-red-500 hover:bg-red-100"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
