@@ -59,7 +59,7 @@ function UnassignedList({
         {unassigned.length === 0 && (
           <div
             id="that_one"
-            className="flex flex-1 items-center justify-center text-gray-500"
+            className="bg-gray-200 border border-dashed border-gray-400 rounded-md flex flex-1 items-center justify-center text-sm text-gray-500/50 italic select-none"
           >
             Drag here to unassign guest
           </div>
