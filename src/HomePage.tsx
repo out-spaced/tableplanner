@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GuestList from "./GuestList";
 import TableList from "./TableList";
 import UnassignedList from "./UnassignedList";
@@ -7,9 +7,25 @@ import ImportButton from "./ImportButton";
 import ResetButton from "./ResetButton";
 
 function HomePage() {
+  const [isMobile, setIsMobile] = useState(false);
   const [tables, setTables] = useState<Table[]>([
     { index: 0, seats: 5000, seatsOccupied: 0, next: null }, //create unassigned table
   ]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(pointer: coarse) and (hover: none)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+      setIsMobile(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 font-sans text-gray-900">
@@ -19,11 +35,13 @@ function HomePage() {
         </div>
       </header>
       <div className="flex justify-center items-start pt-16 pb-4">
-        <UnassignedList
-          tables={tables}
-          setTables={setTables}
-          unassignedHead={tables[0]}
-        />
+        {!isMobile && (
+          <UnassignedList
+            tables={tables}
+            setTables={setTables}
+            unassignedHead={tables[0]}
+          />
+        )}
         <TableList tables={tables} setTables={setTables} />
         <div>
           <div className="border rounded-md">
@@ -33,6 +51,13 @@ function HomePage() {
             <ResetButton setTables={setTables} />
           </div>
           <GuestList tables={tables} setTables={setTables} />
+          {isMobile && (
+            <UnassignedList
+              tables={tables}
+              setTables={setTables}
+              unassignedHead={tables[0]}
+            />
+          )}
         </div>
       </div>
     </div>
