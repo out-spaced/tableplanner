@@ -32,7 +32,9 @@ function Guest({
   return (
     <li>
       <div className="flex justify-between">
-        <div>{guestInfo.name}</div>
+        <div>
+          {guestInfo.name} {guestInfo.table > 0 && `(${guestInfo.table})`}
+        </div>
         <div>
           <button
             className={`${
