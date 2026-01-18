@@ -52,6 +52,7 @@ function GuestList({
       <h3>Guest List</h3>
       <div>
         <input
+          id="guest-name-input"
           className="border rounded-md"
           type="text"
           value={inputValue}
