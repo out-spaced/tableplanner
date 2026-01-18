@@ -51,12 +51,19 @@ function UnassignedList({
     <div
       onDrop={handleDrop}
       onDragOver={handleDragOver}
-      className="border rounded-md p-2"
+      className="border rounded-md min-h-50 min-w-60 p-2 flex flex-col"
     >
-      <h3>Unassigned List</h3>
-      <div></div>
+      <h3 className="select-none text-center">Unassigned List</h3>
 
-      <div>
+      <div className="flex flex-col flex-1">
+        {unassigned.length === 0 && (
+          <div
+            id="that_one"
+            className="flex flex-1 items-center justify-center text-gray-500"
+          >
+            Drag here to unassign guest
+          </div>
+        )}
         <ul>
           {unassigned.map((guest, index) => (
             <UnassignedSeat key={index} guest={guest} />
