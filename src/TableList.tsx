@@ -4,9 +4,11 @@ import Table from "./Table";
 function TableList({
   tables,
   setTables,
+  isMobile,
 }: {
   tables: Table[];
   setTables: Function;
+  isMobile: boolean;
 }) {
   const [tableSize, setTableSize] = useState<number>(6);
 
@@ -45,7 +47,9 @@ function TableList({
           Add
         </button>
       </div>
-      <div className="grid grid-cols-2 gap-1 w-[500px]">
+      <div
+        className={`grid  gap-1  ${isMobile ? "w-[250px] grid-cols-1" : "w-[500px] grid-cols-2"} `}
+      >
         {tables.slice(1).map((table, index) => (
           <Table
             key={index}
