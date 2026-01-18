@@ -28,6 +28,12 @@ function GuestList({
     setTables(newTables);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      addGuest();
+    }
+  };
+
   useEffect(() => {
     const newAllGuests: Person[] = [];
     tables.forEach((table) => {
@@ -50,6 +56,7 @@ function GuestList({
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e)}
         />
         <button
           className="m-1 p-2 pt-1 pb-1 bg-green-500 rounded-sm shadow-gray-500 hover:shadow-md"

@@ -21,5 +21,3 @@ error boundary
 lock/unlock tables button
 
 lock/unlock guests button
-
-hitting enter should trigger add button
