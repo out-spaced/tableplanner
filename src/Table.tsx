@@ -60,7 +60,9 @@ function Table({
       const newTable = { ...tables[table.index] };
       const newTables = [...tables];
       newTables[table.index] = newTable;
-      newTables[dragData.table] = oldTable;
+      if (dragData.table !== table.index) {
+        newTables[dragData.table] = oldTable;
+      }
       setTables(newTables);
     } else {
       // todo: add error for table being full

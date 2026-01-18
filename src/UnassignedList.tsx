@@ -26,7 +26,9 @@ function UnassignedList({
     const newTable = { ...tables[0] };
     const newTables = [...tables];
     newTables[0] = newTable;
-    newTables[dragData.table] = oldTable;
+    if (dragData.table !== 0) {
+      newTables[dragData.table] = oldTable;
+    }
     setTables(newTables);
   };
 
