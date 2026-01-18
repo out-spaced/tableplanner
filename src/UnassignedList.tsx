@@ -49,7 +49,7 @@ function UnassignedList({
     <div
       onDrop={handleDrop}
       onDragOver={handleDragOver}
-      className="border rounded-md pl-5 pr-5 pt-2 pb-5"
+      className="border rounded-md p-2"
     >
       <h3>Unassigned List</h3>
       <div></div>
