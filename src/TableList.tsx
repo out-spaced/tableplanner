@@ -28,6 +28,7 @@ function TableList({
     <div className="border rounded-md p-2">
       <div>
         <select
+          id="table-size-select"
           value={tableSize}
           onChange={(e) => setTableSize(parseInt(e.target.value, 10))}
         >
@@ -45,7 +46,6 @@ function TableList({
         </button>
       </div>
       <div className="grid grid-cols-2 gap-1 w-[500px]">
-        {/*overflow-y-auto */}
         {tables.slice(1).map((table, index) => (
           <Table
             key={index}
