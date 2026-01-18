@@ -110,7 +110,7 @@ function Table({
           ))}
           {Array.from({ length: table.seats - table.seatsOccupied }).map(
             (_, index) => (
-              <EmptySeat key={index} />
+              <EmptySeat key={5000 + index} />
             ),
           )}
         </ul>
