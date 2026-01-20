@@ -25,7 +25,7 @@ function TableList({
   };
 
   return (
-    <div className="border rounded-md p-2">
+    <div className="border rounded-md p-2 flex flex-col grow md:grow-0">
       <div>
         <select
           id="table-size-select"
