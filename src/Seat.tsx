@@ -12,7 +12,7 @@ function Seat({ guest }: { guest: Person }) {
       draggable="true"
       onDragStart={handleDragStart}
       className={`
-        text-xs h-8 font-medium
+        text-xs h-8 font-medium select-none
         ${guest.paid ? "bg-green-300" : "bg-red-300"}
         border rounded-md flex justify-center items-center text-center`}
     >

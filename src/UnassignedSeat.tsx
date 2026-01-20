@@ -2,7 +2,7 @@ function UnassignedSeat({ guest }: { guest: Person }) {
   const handleDragStart = (e: React.DragEvent<HTMLLIElement>) => {
     e.dataTransfer.setData(
       "text",
-      JSON.stringify({ index: guest.index, table: 0 })
+      JSON.stringify({ index: guest.index, table: 0 }),
     );
     e.dataTransfer.effectAllowed = "move";
   };
@@ -13,7 +13,7 @@ function UnassignedSeat({ guest }: { guest: Person }) {
       onDragStart={handleDragStart}
       className={`
         ${guest.paid ? "bg-green-400" : "bg-red-400"}
-        border rounded-md`}
+        border rounded-md select-none`}
     >
       {guest.name}
     </li>

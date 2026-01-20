@@ -14,6 +14,11 @@ function Table({
 }) {
   const [seatList, setSeatList] = useState<Person[]>([]);
 
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+  };
+
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
@@ -81,6 +86,7 @@ function Table({
 
   return (
     <div
+      onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
       className="border-2 rounded-md border-dashed p-1 border-gray-400"

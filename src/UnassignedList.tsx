@@ -32,6 +32,11 @@ function UnassignedList({
     setTables(newTables);
   };
 
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+  };
+
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
@@ -50,6 +55,7 @@ function UnassignedList({
   return (
     <div
       onDrop={handleDrop}
+      onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       className="border rounded-md min-h-50 min-w-60 p-2 flex flex-col"
     >
