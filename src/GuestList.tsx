@@ -16,7 +16,7 @@ function GuestList({
 
   const addGuest = () => {
     if (inputValue.length < 3) {
-      setError("Name must be at least 3 characters long");
+      setError("Name must be at least 3 characters");
       return;
     }
     setError("");
@@ -74,7 +74,7 @@ function GuestList({
       </div>
       {error && (
         <div>
-          <span className="bg-red-300 rounded-sm p-1">{error}</span>
+          <span className="bg-red-300 rounded-sm p-1 text-xs">{error}</span>
         </div>
       )}
       <div>
