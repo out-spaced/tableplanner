@@ -31,7 +31,13 @@ function GuestList({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       addGuest();
+    } else {
+      setError("");
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value.replace(/[^().a-zA-Z0-9\s]/g, ""));
   };
 
   useEffect(() => {
@@ -56,7 +62,7 @@ function GuestList({
           className="border rounded-md"
           type="text"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) => handleChange(e)}
           onKeyDown={(e) => handleKeyDown(e)}
         />
         <button
