@@ -56,7 +56,7 @@ function GuestList({
   return (
     <div className="border rounded-md">
       <h3>Guest List</h3>
-      <div>
+      <div className="flex flex-col md:flex-row md:items-center">
         <input
           id="guest-name-input"
           className="border rounded-md"
