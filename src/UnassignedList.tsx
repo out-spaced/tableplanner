@@ -57,7 +57,7 @@ function UnassignedList({
       onDrop={handleDrop}
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
-      className="border rounded-md min-h-50 min-w-60 p-2 flex flex-col"
+      className="border rounded-md min-h-50 p-2 flex flex-col"
     >
       <h3 className="select-none text-center">Unassigned List</h3>
 
