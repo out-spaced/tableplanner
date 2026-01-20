@@ -42,7 +42,7 @@ function HomePage() {
             unassignedHead={tables[0]}
           />
         )}
-        <TableList tables={tables} setTables={setTables} isMobile={isMobile} />
+        <TableList tables={tables} setTables={setTables} />
         <div>
           <div className="border rounded-md">
             <h2> Actions </h2>
