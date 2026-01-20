@@ -13,7 +13,7 @@ function HomePage() {
   ]);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const mediaQuery = window.matchMedia("(pointer: coarse) and (hover: none)");
     setIsMobile(mediaQuery.matches);
 
     const handleMediaQueryChange = (event: MediaQueryListEvent) => {
