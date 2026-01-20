@@ -54,7 +54,7 @@ function GuestList({
   }, [tables]);
 
   return (
-    <div className="border rounded-md pl-5 pr-5 pt-2 pb-5">
+    <div className="border rounded-md">
       <h3>Guest List</h3>
       <div>
         <input
