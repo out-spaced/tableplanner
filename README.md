@@ -2,6 +2,8 @@ Plans tables (like, physical tables) and flags if they paid or not.
 
 todo:
 
+save new guest id state on export
+
 check if name is unique before adding
 
 add styling
