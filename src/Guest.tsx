@@ -35,7 +35,7 @@ function Guest({
         <div className="text-xs">
           <button
             className={`${
-              guestInfo.paid ? "bg-green-400" : "bg-red-400"
+              guestInfo.paid ? "bg-green-300" : "bg-red-300"
             } m-1 p-2 pt-1 pb-1 shadow-gray-500 hover:shadow-md`}
             onClick={() => setPaidOnObject()}
           >
