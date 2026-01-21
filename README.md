@@ -2,7 +2,7 @@ Plans tables (like, physical tables) and flags if they paid or not.
 
 todo:
 
-save new guest id state on export
+add hide guestlist button (so you can easily add unassigned people on mobile)
 
 check if name is unique before adding
 
