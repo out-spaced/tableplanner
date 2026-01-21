@@ -13,7 +13,7 @@ function UnassignedSeat({ guest }: { guest: Person }) {
       onDragStart={handleDragStart}
       className={`
         ${guest.paid ? "bg-green-400" : "bg-red-400"}
-        border rounded-md select-none`}
+        border rounded-md select-none touch-none`}
     >
       {guest.name}
     </li>
