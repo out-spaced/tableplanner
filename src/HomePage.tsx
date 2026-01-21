@@ -8,6 +8,7 @@ import ResetButton from "./ResetButton";
 
 function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
+  const [guestIndexCount, setGuestIndexCount] = useState<number>(0);
   const [tables, setTables] = useState<Table[]>([
     { index: 0, seats: 5000, seatsOccupied: 0, next: null }, //create unassigned table
   ]);
@@ -46,11 +47,19 @@ function HomePage() {
         <div>
           <div className="border rounded-md">
             <h2> Actions </h2>
-            <ImportButton setTables={setTables} />
-            <ExportButton tables={tables} />
+            <ImportButton
+              setTables={setTables}
+              setGuestIndexCount={setGuestIndexCount}
+            />
+            <ExportButton tables={tables} guestIndexCount={guestIndexCount} />
             <ResetButton setTables={setTables} />
           </div>
-          <GuestList tables={tables} setTables={setTables} />
+          <GuestList
+            tables={tables}
+            setTables={setTables}
+            guestIndexCount={guestIndexCount}
+            setGuestIndexCount={setGuestIndexCount}
+          />
           {isMobile && (
             <UnassignedList
               tables={tables}

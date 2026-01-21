@@ -5,12 +5,15 @@ import Guest from "./Guest";
 function GuestList({
   tables,
   setTables,
+  guestIndexCount,
+  setGuestIndexCount,
 }: {
   tables: Table[];
   setTables: Function;
+  guestIndexCount: number;
+  setGuestIndexCount: Function;
 }) {
   const [allGuests, setAllGuests] = useState<Person[]>([]);
-  const [guestIndexCount, setGuestIndexCount] = useState<number>(0);
   const [inputValue, setInputValue] = useState<string>("");
   const [error, setError] = useState<string>("");
 
@@ -21,7 +24,7 @@ function GuestList({
     }
     setError("");
     setInputValue("");
-    setGuestIndexCount((prev) => prev + 1);
+    setGuestIndexCount((prev: number) => prev + 1);
     const newTables = [...tables];
     newTables[0] = { ...tables[0] };
     insertNewGuest(guestIndexCount, inputValue, newTables[0]);

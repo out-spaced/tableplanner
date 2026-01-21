@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
 
-function ExportButton({ tables }: { tables: Table[] }) {
+function ExportButton({
+  tables,
+  guestIndexCount,
+}: {
+  tables: Table[];
+  guestIndexCount: number;
+}) {
   const [data, setData] = useState<string>("");
 
   useEffect(() => {
     setData(
-      JSON.stringify(tables, (key, value) => {
-        if (key === "prev") return undefined;
-        return value;
-      })
+      JSON.stringify(
+        [...tables, { guestIndexCount: guestIndexCount }],
+        (key, value) => {
+          if (key === "prev") return undefined;
+          return value;
+        },
+      ),
     );
   }, [tables]);
 

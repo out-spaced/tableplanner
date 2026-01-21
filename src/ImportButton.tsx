@@ -1,4 +1,10 @@
-function ImportButton({ setTables }: { setTables: Function }) {
+function ImportButton({
+  setTables,
+  setGuestIndexCount,
+}: {
+  setTables: Function;
+  setGuestIndexCount: Function;
+}) {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     const file = e.target.files[0];
@@ -8,6 +14,8 @@ function ImportButton({ setTables }: { setTables: Function }) {
       reader.onload = (e) => {
         if (!e.target) return;
         const newTables = JSON.parse(e.target.result as string);
+        const newGuestIndexCountObj = newTables.pop();
+        setGuestIndexCount(newGuestIndexCountObj.guestIndexCount);
         fixPrevLinks(newTables);
         setTables(newTables);
       };
