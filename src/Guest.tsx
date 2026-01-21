@@ -31,22 +31,29 @@ function Guest({
 
   return (
     <li>
-      <div className="flex justify-between">
-        <div>
-          {guestInfo.name} {guestInfo.table > 0 && `(${guestInfo.table})`}
-        </div>
-        <div>
+      <div className="border flex justify-between">
+        <div className="text-xs">
           <button
             className={`${
               guestInfo.paid ? "bg-green-400" : "bg-red-400"
             } m-1 p-2 pt-1 pb-1 shadow-gray-500 hover:shadow-md`}
             onClick={() => setPaidOnObject()}
           >
-            {guestInfo.paid ? "Paid" : "Not Paid"}
+            {guestInfo.name} {guestInfo.table > 0 && `(${guestInfo.table})`}
           </button>
+        </div>
+        <div>
+          {/* <button
+            className={`${
+              guestInfo.paid ? "bg-green-400" : "bg-red-400"
+            } m-1 p-2 pt-1 pb-1 shadow-gray-500 hover:shadow-md`}
+            onClick={() => setPaidOnObject()}
+          >
+            {guestInfo.paid ? "Paid" : "Not Paid"}
+          </button> */}
           <button
             onClick={() => removeSelf()}
-            className="text-gray-500 rounded-sm transition-colors hover:text-red-500 hover:bg-red-100"
+            className="text-xs text-gray-500 rounded-sm transition-colors hover:text-red-500 hover:bg-red-100"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
