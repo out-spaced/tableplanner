@@ -1,4 +1,6 @@
-Plans tables (like, physical tables) and flags if they paid or not.
+Plans tables (like, physical tables) and flags if they paid or not. Works but still needs polish.
+
+Run: clone then 'npm run dev'
 
 todo:
 
