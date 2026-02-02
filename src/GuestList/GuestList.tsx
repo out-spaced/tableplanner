@@ -1,5 +1,5 @@
 import { useEffect, useState, Activity } from "react";
-import { insertNewGuest } from "./utils";
+import { insertNewGuest } from "../utils";
 import Guest from "./Guest";
 import HideGuestList from "./HideGuestList";
 

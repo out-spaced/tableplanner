@@ -1,4 +1,4 @@
-import { findGuest, removeGuestByIndex } from "./utils";
+import { findGuest, removeGuestByIndex } from "../utils";
 
 function Guest({
   guestInfo,
