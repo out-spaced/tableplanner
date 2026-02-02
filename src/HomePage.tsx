@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import GuestList from "./GuestList";
 import TableList from "./TableList";
 import UnassignedList from "./UnassignedList";
-import ExportButton from "./ExportButton";
-import ImportButton from "./ImportButton";
-import ResetButton from "./ResetButton";
+import Actions from "./Actions/Actions";
 
 function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -45,15 +43,12 @@ function HomePage() {
         )}
         <TableList tables={tables} setTables={setTables} />
         <div>
-          <div className="border rounded-md">
-            <h2> Actions </h2>
-            <ImportButton
-              setTables={setTables}
-              setGuestIndexCount={setGuestIndexCount}
-            />
-            <ExportButton tables={tables} guestIndexCount={guestIndexCount} />
-            <ResetButton setTables={setTables} />
-          </div>
+          <Actions
+            guestIndexCount={guestIndexCount}
+            setGuestIndexCount={setGuestIndexCount}
+            tables={tables}
+            setTables={setTables}
+          />
           <GuestList
             tables={tables}
             setTables={setTables}
