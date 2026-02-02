@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Activity } from "react";
 import { insertNewGuest } from "./utils";
 import Guest from "./Guest";
+import HideGuestList from "./HideGuestList";
 
 function GuestList({
   tables,
@@ -14,6 +15,7 @@ function GuestList({
   setGuestIndexCount: Function;
 }) {
   const [allGuests, setAllGuests] = useState<Person[]>([]);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
   const [inputValue, setInputValue] = useState<string>("");
   const [error, setError] = useState<string>("");
 
@@ -58,40 +60,43 @@ function GuestList({
 
   return (
     <div className="border rounded-md">
-      <h3>Guest List</h3>
-      <div className="flex flex-col md:flex-row md:items-center">
-        <input
-          id="guest-name-input"
-          className="border rounded-md"
-          type="text"
-          value={inputValue}
-          onChange={(e) => handleChange(e)}
-          onKeyDown={(e) => handleKeyDown(e)}
-        />
-        <button
-          className="m-1 p-2 pt-1 pb-1 bg-green-500 rounded-sm shadow-gray-500 hover:shadow-md"
-          onClick={() => addGuest()}
-        >
-          Add
-        </button>
-      </div>
-      {error && (
-        <div>
-          <span className="bg-red-300 rounded-sm p-1 text-xs">{error}</span>
+      <HideGuestList isVisible={isVisible} setIsVisible={setIsVisible} />
+      <Activity mode={isVisible ? "visible" : "hidden"}>
+        <h3>Guest List</h3>
+        <div className="flex flex-col md:flex-row md:items-center">
+          <input
+            id="guest-name-input"
+            className="border rounded-md"
+            type="text"
+            value={inputValue}
+            onChange={(e) => handleChange(e)}
+            onKeyDown={(e) => handleKeyDown(e)}
+          />
+          <button
+            className="m-1 p-2 pt-1 pb-1 bg-green-500 rounded-sm shadow-gray-500 hover:shadow-md"
+            onClick={() => addGuest()}
+          >
+            Add
+          </button>
         </div>
-      )}
-      <div>
-        <ul>
-          {allGuests.map((guest) => (
-            <Guest
-              key={guest.index}
-              guestInfo={guest}
-              tables={tables}
-              setTables={setTables}
-            />
-          ))}
-        </ul>
-      </div>
+        {error && (
+          <div>
+            <span className="bg-red-300 rounded-sm p-1 text-xs">{error}</span>
+          </div>
+        )}
+        <div>
+          <ul>
+            {allGuests.map((guest) => (
+              <Guest
+                key={guest.index}
+                guestInfo={guest}
+                tables={tables}
+                setTables={setTables}
+              />
+            ))}
+          </ul>
+        </div>
+      </Activity>
     </div>
   );
 }
