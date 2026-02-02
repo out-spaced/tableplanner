@@ -15,6 +15,7 @@ function GuestList({
   setGuestIndexCount: Function;
 }) {
   const [allGuests, setAllGuests] = useState<Person[]>([]);
+  const [guestDupeCheck, setGuestDupeCheck] = useState<Set<string>>(new Set());
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const [inputValue, setInputValue] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -22,6 +23,10 @@ function GuestList({
   const addGuest = () => {
     if (inputValue.length < 3) {
       setError("Name must be at least 3 characters");
+      return;
+    }
+    if (guestDupeCheck.has(inputValue.toLowerCase())) {
+      setError("Name already exists");
       return;
     }
     setError("");
@@ -47,15 +52,18 @@ function GuestList({
 
   useEffect(() => {
     const newAllGuests: Person[] = [];
+    const newGuestDupeCheck: Set<string> = new Set();
     tables.forEach((table) => {
       let ptr = table.next;
       while (ptr != null) {
         newAllGuests.push(ptr);
+        newGuestDupeCheck.add(ptr.name.toLowerCase());
         ptr = ptr.next;
       }
     });
     newAllGuests.sort((a, b) => a.name.localeCompare(b.name));
     setAllGuests(newAllGuests);
+    setGuestDupeCheck(newGuestDupeCheck);
   }, [tables]);
 
   return (
