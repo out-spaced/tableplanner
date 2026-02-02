@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import GuestList from "./GuestList/GuestList";
-import TableList from "./TableList";
+import TableList from "./TableList/TableList";
 import UnassignedList from "./UnassignedList";
 import Actions from "./Actions/Actions";
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Seat from "./Seat";
 import EmptySeat from "./EmptySeat";
-import { findGuest, insertGuest, removeGuestByIndex } from "./utils";
+import { findGuest, insertGuest, removeGuestByIndex } from "../utils";
 
 function Table({
   table,
