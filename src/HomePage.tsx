@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import GuestList from "./GuestList/GuestList";
 import TableList from "./TableList/TableList";
-import UnassignedList from "./UnassignedList";
+import UnassignedList from "./UnassignedList/UnassignedList";
 import Actions from "./Actions/Actions";
 
 function HomePage() {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import UnassignedSeat from "./UnassignedSeat";
-import { findGuest, insertGuest, removeGuestByIndex } from "./utils";
+import { findGuest, insertGuest, removeGuestByIndex } from "../utils";
 
 function UnassignedList({
   unassignedHead,
