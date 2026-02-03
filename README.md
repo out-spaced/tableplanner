@@ -4,10 +4,6 @@ Run: clone then 'npm run dev'
 
 todo:
 
-add hide guestlist button (so you can easily add unassigned people on mobile)
-
-check if name is unique before adding
-
 add styling
 
 ticket cost input field
@@ -15,8 +11,6 @@ ticket cost input field
 total sum collected display
 
 create google login / save data to firebase
-
-confirmation for removal
 
 error for full table
 
