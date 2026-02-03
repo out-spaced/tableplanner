@@ -46,7 +46,7 @@ function ImportButton({
   };
 
   return (
-    <label className="m-1 p-2 pt-1 pb-1 bg-blue-300 rounded-sm shadow-gray-500 hover:shadow-md">
+    <label className="btn-default">
       Import
       <input
         type="file"

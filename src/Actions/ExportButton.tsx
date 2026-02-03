@@ -34,10 +34,7 @@ function ExportButton({
   };
 
   return (
-    <button
-      onClick={handleDownload}
-      className="m-1 p-2 pt-1 pb-1 bg-blue-300 rounded-sm shadow-gray-500 hover:shadow-md"
-    >
+    <button onClick={handleDownload} className="btn-default">
       Export
     </button>
   );

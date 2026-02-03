@@ -7,7 +7,7 @@ function HideGuestList({
 }) {
   return (
     <button
-      className="m-1 p-2 pt-1 pb-1 bg-blue-300 rounded-sm shadow-gray-500 hover:shadow-md"
+      className="btn-default"
       onClick={() => setIsVisible((prev: boolean) => !prev)}
     >
       {isVisible ? "Hide guestlist" : "Show Guestlist"}
