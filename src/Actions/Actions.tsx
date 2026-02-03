@@ -33,7 +33,7 @@ function Actions({
       </Activity>
       <Activity mode={resetClicked ? "visible" : "hidden"}>
         <div>
-          <button className="btn-default" onClick={() => reset()}>
+          <button className="btn-oj" onClick={() => reset()}>
             Reset
           </button>
           <button
