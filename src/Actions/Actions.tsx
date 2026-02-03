@@ -18,6 +18,7 @@ function Actions({
 
   const reset = () => {
     setTables([{ index: 0, seats: 5000, seatsOccupied: 0, next: null }]);
+    setResetClicked(false);
   };
 
   return (
