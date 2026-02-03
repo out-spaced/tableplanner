@@ -1,11 +1,7 @@
-function ResetButton({ setTables }: { setTables: Function }) {
-  const reset = () => {
-    setTables([{ index: 0, seats: 5000, seatsOccupied: 0, next: null }]);
-  };
-
+function ResetButton({ setResetClicked }: { setResetClicked: Function }) {
   return (
     <button
-      onClick={() => reset()}
+      onClick={() => setResetClicked(true)}
       className="m-1 p-2 pt-1 pb-1 bg-amber-500 rounded-sm shadow-gray-500 hover:shadow-md"
     >
       Reset
