@@ -3,10 +3,12 @@ import UnassignedSeat from "./UnassignedSeat";
 import { findGuest, insertGuest, removeGuestByIndex } from "../utils";
 
 function UnassignedList({
+  isMobile,
   unassignedHead,
   tables,
   setTables,
 }: {
+  isMobile: boolean;
   unassignedHead: Table;
   tables: Table[];
   setTables: Function;
@@ -57,7 +59,7 @@ function UnassignedList({
       onDrop={handleDrop}
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
-      className="border rounded-md min-h-50 p-2 flex flex-col"
+      className={`border rounded-md min-h-50 p-2 flex flex-col ${isMobile ? "" : "sticky top-[68px]"}`}
     >
       <h3 className="select-none text-center">Unassigned List</h3>
 

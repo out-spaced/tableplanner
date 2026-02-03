@@ -36,6 +36,7 @@ function HomePage() {
       <div className="flex md:justify-center items-start md:pt-16">
         {!isMobile && (
           <UnassignedList
+            isMobile={isMobile}
             tables={tables}
             setTables={setTables}
             unassignedHead={tables[0]}
@@ -57,6 +58,7 @@ function HomePage() {
           />
           {isMobile && (
             <UnassignedList
+              isMobile={isMobile}
               tables={tables}
               setTables={setTables}
               unassignedHead={tables[0]}
