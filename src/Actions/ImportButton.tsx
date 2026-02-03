@@ -31,6 +31,7 @@ function ImportButton({
     } else {
       // todo: set error state and show in ui
     }
+    e.target.value = "";
   };
 
   const fixPrevLinks = (tables: Table[]) => {
