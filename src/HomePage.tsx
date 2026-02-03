@@ -33,7 +33,7 @@ function HomePage() {
           <h1 className="text-3xl font-bold text-gray-900">Table Planner</h1>
         </div>
       </header>
-      <div className="flex md:justify-center items-start md:pt-16 overflow-x-auto">
+      <div className="flex md:justify-center items-start md:pt-16">
         {!isMobile && (
           <UnassignedList
             tables={tables}
@@ -42,7 +42,7 @@ function HomePage() {
           />
         )}
         <TableList tables={tables} setTables={setTables} />
-        <div>
+        <div className="sticky top-[68px]">
           <Actions
             guestIndexCount={guestIndexCount}
             setGuestIndexCount={setGuestIndexCount}
