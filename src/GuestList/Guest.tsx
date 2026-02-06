@@ -43,14 +43,6 @@ function Guest({
           </button>
         </div>
         <div>
-          {/* <button
-            className={`${
-              guestInfo.paid ? "bg-green-400" : "bg-red-400"
-            } m-1 p-2 pt-1 pb-1 shadow-gray-500 hover:shadow-md`}
-            onClick={() => setPaidOnObject()}
-          >
-            {guestInfo.paid ? "Paid" : "Not Paid"}
-          </button> */}
           <button
             onClick={() => removeSelf()}
             className="text-xs text-gray-500 rounded-sm transition-colors hover:text-red-500 hover:bg-red-100"
