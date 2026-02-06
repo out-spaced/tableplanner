@@ -14,7 +14,7 @@ function GuestList({
   setTables: Function;
   guestIndexCount: number;
   setGuestIndexCount: Function;
-  ismobile: boolean;
+  isMobile: boolean;
 }) {
   const [allGuests, setAllGuests] = useState<Person[]>([]);
   const [guestDupeCheck, setGuestDupeCheck] = useState<Set<string>>(new Set());
