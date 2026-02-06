@@ -55,6 +55,7 @@ function HomePage() {
             setTables={setTables}
             guestIndexCount={guestIndexCount}
             setGuestIndexCount={setGuestIndexCount}
+            isMobile={isMobile}
           />
           {isMobile && (
             <UnassignedList

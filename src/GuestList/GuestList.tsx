@@ -8,11 +8,13 @@ function GuestList({
   setTables,
   guestIndexCount,
   setGuestIndexCount,
+  isMobile,
 }: {
   tables: Table[];
   setTables: Function;
   guestIndexCount: number;
   setGuestIndexCount: Function;
+  ismobile: boolean;
 }) {
   const [allGuests, setAllGuests] = useState<Person[]>([]);
   const [guestDupeCheck, setGuestDupeCheck] = useState<Set<string>>(new Set());
@@ -69,7 +71,9 @@ function GuestList({
   return (
     <div className="big-component flex-col">
       <h3 className="component-title">Guest List</h3>
-      <HideGuestList isVisible={isVisible} setIsVisible={setIsVisible} />
+      {isMobile && (
+        <HideGuestList isVisible={isVisible} setIsVisible={setIsVisible} />
+      )}
       <Activity mode={isVisible ? "visible" : "hidden"}>
         <div className="flex flex-col md:flex-row md:items-center pt-2 pb-2">
           <input
