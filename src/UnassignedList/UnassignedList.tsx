@@ -59,7 +59,7 @@ function UnassignedList({
       onDrop={handleDrop}
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
-      className={`border rounded-md min-h-50 p-2 flex flex-col ${isMobile ? "" : "sticky top-[68px]"}`}
+      className={`big-component min-h-50 flex-col ${isMobile ? "" : "sticky top-[68px]"}`}
     >
       <h3 className="select-none text-center">Unassigned List</h3>
 
