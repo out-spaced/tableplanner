@@ -32,15 +32,18 @@ function Guest({
   return (
     <li className="border border-transparent select-none rounded-sm hover:border hover:border-gray-300">
       <div className="flex justify-between">
-        <div className="text-xs">
+        <div className="flex">
           <button
             className={`${
               guestInfo.paid ? "bg-green-300" : "bg-red-300"
-            } rounded-sm m-1 p-2 pt-1 pb-1 shadow-gray-500 hover:shadow-md`}
+            } btn-paid`}
             onClick={() => setPaidOnObject()}
           >
-            {guestInfo.name} {guestInfo.table > 0 && `(${guestInfo.table})`}
+            $
           </button>
+          <div className="name-text">
+            {guestInfo.name} {guestInfo.table > 0 && `(${guestInfo.table})`}
+          </div>
         </div>
         <div className="flex">
           <button
