@@ -81,10 +81,7 @@ function GuestList({
             onKeyDown={(e) => handleKeyDown(e)}
             placeholder="Enter guest name..."
           />
-          <button
-            className="m-1 p-2 pt-1 pb-1 bg-green-500 rounded-sm shadow-gray-500 hover:shadow-md"
-            onClick={() => addGuest()}
-          >
+          <button className="btn-default" onClick={() => addGuest()}>
             Add
           </button>
         </div>

@@ -30,7 +30,7 @@ function Guest({
   };
 
   return (
-    <li className="border border-transparent rounded-sm hover:border hover:border-gray-300">
+    <li className="border border-transparent select-none rounded-sm hover:border hover:border-gray-300">
       <div className="flex justify-between">
         <div className="text-xs">
           <button

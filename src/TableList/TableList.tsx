@@ -38,10 +38,7 @@ function TableList({
             </option>
           ))}
         </select>
-        <button
-          className="m-1 p-2 pt-1 pb-1 bg-green-500 rounded-sm shadow-gray-500 hover:shadow-md"
-          onClick={() => addTable()}
-        >
+        <button className="btn-default" onClick={() => addTable()}>
           Add
         </button>
       </div>
