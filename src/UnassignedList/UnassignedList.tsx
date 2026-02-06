@@ -59,9 +59,9 @@ function UnassignedList({
       onDrop={handleDrop}
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
-      className={`big-component min-h-50 flex-col ${isMobile ? "" : "sticky top-[68px]"}`}
+      className={`big-component min-w-[215px] min-h-50 flex-col ${isMobile ? "" : "sticky top-[68px]"}`}
     >
-      <h3 className="select-none text-center">Unassigned List</h3>
+      <h3 className="component-title">Unassigned List</h3>
 
       <div className="flex flex-col flex-1">
         {unassigned.length === 0 && (
@@ -72,7 +72,7 @@ function UnassignedList({
             Drag here to unassign guest
           </div>
         )}
-        <ul>
+        <ul className="list-container">
           {unassigned.map((guest, index) => (
             <UnassignedSeat key={index} guest={guest} />
           ))}

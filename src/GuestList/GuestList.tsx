@@ -68,10 +68,10 @@ function GuestList({
 
   return (
     <div className="big-component flex-col">
+      <h3 className="component-title">Guest List</h3>
       <HideGuestList isVisible={isVisible} setIsVisible={setIsVisible} />
       <Activity mode={isVisible ? "visible" : "hidden"}>
-        <h3 className="bar-underline">Guest List</h3>
-        <div className="flex flex-col md:flex-row md:items-center">
+        <div className="flex flex-col md:flex-row md:items-center pt-2 pb-2">
           <input
             id="guest-name-input"
             className="text-input"
@@ -93,7 +93,7 @@ function GuestList({
             <span className="bg-red-300 rounded-sm p-1 text-xs">{error}</span>
           </div>
         )}
-        <div className="border border-gray-300 rounded-sm p-2">
+        <div className="list-container">
           <ul>
             {allGuests.map((guest) => (
               <Guest

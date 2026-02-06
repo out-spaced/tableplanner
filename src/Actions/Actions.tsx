@@ -25,7 +25,7 @@ function Actions({
   return (
     <div className="big-component">
       <div>
-        <h2 className="bar-underline"> Actions </h2>
+        <h2 className="component-title"> Actions </h2>
         <Activity mode={resetClicked ? "hidden" : "visible"}>
           <ImportButton
             setTables={setTables}
