@@ -23,29 +23,31 @@ function Actions({
   };
 
   return (
-    <div className="border rounded-md">
-      <h2> Actions </h2>
-      <Activity mode={resetClicked ? "hidden" : "visible"}>
-        <ImportButton
-          setTables={setTables}
-          setGuestIndexCount={setGuestIndexCount}
-        />
-        <ExportButton tables={tables} guestIndexCount={guestIndexCount} />
-        <ResetButton setResetClicked={setResetClicked} />
-      </Activity>
-      <Activity mode={resetClicked ? "visible" : "hidden"}>
-        <div>
-          <button className="btn-oj" onClick={() => reset()}>
-            Reset
-          </button>
-          <button
-            className="btn-default"
-            onClick={() => setResetClicked(false)}
-          >
-            Cancel
-          </button>
-        </div>
-      </Activity>
+    <div className="big-component">
+      <div>
+        <h2 className="bar-underline"> Actions </h2>
+        <Activity mode={resetClicked ? "hidden" : "visible"}>
+          <ImportButton
+            setTables={setTables}
+            setGuestIndexCount={setGuestIndexCount}
+          />
+          <ExportButton tables={tables} guestIndexCount={guestIndexCount} />
+          <ResetButton setResetClicked={setResetClicked} />
+        </Activity>
+        <Activity mode={resetClicked ? "visible" : "hidden"}>
+          <div>
+            <button className="btn-oj" onClick={() => reset()}>
+              Reset
+            </button>
+            <button
+              className="btn-default"
+              onClick={() => setResetClicked(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </Activity>
+      </div>
     </div>
   );
 }

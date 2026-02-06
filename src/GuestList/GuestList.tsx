@@ -67,14 +67,14 @@ function GuestList({
   }, [tables]);
 
   return (
-    <div className="border rounded-md">
+    <div className="big-component flex-col">
       <HideGuestList isVisible={isVisible} setIsVisible={setIsVisible} />
       <Activity mode={isVisible ? "visible" : "hidden"}>
-        <h3>Guest List</h3>
+        <h3 className="bar-underline">Guest List</h3>
         <div className="flex flex-col md:flex-row md:items-center">
           <input
             id="guest-name-input"
-            className="border rounded-md"
+            className="text-input"
             type="text"
             value={inputValue}
             onChange={(e) => handleChange(e)}

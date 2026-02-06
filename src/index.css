@@ -9,6 +9,15 @@
         @apply m-1 p-2 pt-1 pb-1 bg-amber-500 rounded-sm shadow-gray-500 hover:shadow-md
     }
     .big-component {
-        @apply flex bg-white rounded-sm shadow-gray-400 shadow-md p-4
+        @apply flex bg-white rounded-sm shadow-gray-400 shadow-md md:p-2 md:m-3
+    }
+    .main-div {
+        @apply min-h-screen bg-gray-200 font-sans text-gray-900
+    }
+    .text-input {
+        @apply border-gray-500 rounded-sm
+    }
+    .bar-underline {
+        @apply border-b border-gray-300
     }
 }
