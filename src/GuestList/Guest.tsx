@@ -31,7 +31,7 @@ function Guest({
 
   return (
     <li>
-      <div className="border flex justify-between">
+      <div className="flex justify-between">
         <div className="text-xs">
           <button
             className={`${
@@ -42,7 +42,7 @@ function Guest({
             {guestInfo.name} {guestInfo.table > 0 && `(${guestInfo.table})`}
           </button>
         </div>
-        <div>
+        <div className="flex">
           <button
             onClick={() => removeSelf()}
             className="text-xs text-gray-500 rounded-sm transition-colors hover:text-red-500 hover:bg-red-100"

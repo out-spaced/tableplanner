@@ -79,6 +79,7 @@ function GuestList({
             value={inputValue}
             onChange={(e) => handleChange(e)}
             onKeyDown={(e) => handleKeyDown(e)}
+            placeholder="Enter guest name..."
           />
           <button
             className="m-1 p-2 pt-1 pb-1 bg-green-500 rounded-sm shadow-gray-500 hover:shadow-md"
@@ -92,7 +93,7 @@ function GuestList({
             <span className="bg-red-300 rounded-sm p-1 text-xs">{error}</span>
           </div>
         )}
-        <div>
+        <div className="border border-gray-300 rounded-sm p-2">
           <ul>
             {allGuests.map((guest) => (
               <Guest
