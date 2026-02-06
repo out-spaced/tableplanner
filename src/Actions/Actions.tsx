@@ -24,15 +24,17 @@ function Actions({
 
   return (
     <div className="big-component">
-      <div>
+      <div className="flex flex-col grow">
         <h2 className="component-title"> Actions </h2>
         <Activity mode={resetClicked ? "hidden" : "visible"}>
-          <ImportButton
-            setTables={setTables}
-            setGuestIndexCount={setGuestIndexCount}
-          />
-          <ExportButton tables={tables} guestIndexCount={guestIndexCount} />
-          <ResetButton setResetClicked={setResetClicked} />
+          <div>
+            <ImportButton
+              setTables={setTables}
+              setGuestIndexCount={setGuestIndexCount}
+            />
+            <ExportButton tables={tables} guestIndexCount={guestIndexCount} />
+            <ResetButton setResetClicked={setResetClicked} />
+          </div>
         </Activity>
         <Activity mode={resetClicked ? "visible" : "hidden"}>
           <div>
