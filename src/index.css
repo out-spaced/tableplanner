@@ -2,11 +2,11 @@
 
 @layer components {
     .btn-default {
-        @apply m-1 p-2 pt-1 pb-1 bg-blue-300 rounded-sm select-none shadow-gray-500 hover:shadow-md
+        @apply m-1 p-2 pt-1 pb-1 text-gray-600 bg-gray-200 border border-gray-300 rounded-sm select-none hover:bg-blue-600 hover:text-white
     }
-    .btn-oj
+    .btn-reset
     {
-        @apply m-1 p-2 pt-1 pb-1 bg-amber-500 rounded-sm select-none shadow-gray-500 hover:shadow-md
+        @apply  bg-amber-400
     }
     .big-component {
         @apply flex bg-white rounded-sm shadow-gray-400 shadow-md md:p-2 md:m-3
