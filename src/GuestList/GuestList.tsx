@@ -23,12 +23,12 @@ function GuestList({
   const [error, setError] = useState<string>("");
 
   const addGuest = () => {
-    const sanatizedInputValue = inputValue.replace(/\s+/g, " ").trim();
-    if (sanatizedInputValue.length < 3) {
+    const trimmedInputValue = inputValue.replace(/\s+/g, " ").trim();
+    if (trimmedInputValue.length < 3) {
       setError("Name must be at least 3 characters");
       return;
     }
-    if (guestDupeCheck.has(sanatizedInputValue.toLowerCase())) {
+    if (guestDupeCheck.has(trimmedInputValue.toLowerCase())) {
       setError("Name already exists");
       return;
     }
@@ -37,7 +37,7 @@ function GuestList({
     setGuestIndexCount((prev: number) => prev + 1);
     const newTables = [...tables];
     newTables[0] = { ...tables[0] };
-    insertNewGuest(guestIndexCount, sanatizedInputValue, newTables[0]);
+    insertNewGuest(guestIndexCount, trimmedInputValue, newTables[0]);
     setTables(newTables);
   };
 
