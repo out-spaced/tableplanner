@@ -30,17 +30,18 @@ function TableList({
       <div>
         <select
           id="table-size-select"
+          className="focus:ring-2 focus:ring-blue-300 focus:outline-none rounded-md border border-gray-300 p-1 mr-2"
           value={tableSize}
           onChange={(e) => setTableSize(parseInt(e.target.value, 10))}
         >
-          {Array.from({ length: 10 }).map((_, index) => (
+          {Array.from({ length: 12 }).map((_, index) => (
             <option key={index} value={index + 1}>
-              {index + 1}
+              {index + 1} seats
             </option>
           ))}
         </select>
         <button className="btn-default" onClick={() => addTable()}>
-          Add
+          Add Table
         </button>
       </div>
       <div className={`grid  gap-1 grid-cols-1 md:grid-cols-2 md:w-[500px]`}>
