@@ -35,8 +35,10 @@ function Guest({
         <div className="flex">
           <button
             className={`${
-              guestInfo.paid ? "bg-green-300" : "bg-red-300"
-            } btn-paid`}
+              guestInfo.paid
+                ? "bg-green-300 hover:bg-green-500 hover:text-black"
+                : "bg-red-300 hover:bg-red-500 hover:text-white"
+            } text-sm mr-2 p-1 rounded-sm`}
             onClick={() => setPaidOnObject()}
           >
             $
