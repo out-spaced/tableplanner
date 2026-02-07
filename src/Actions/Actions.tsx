@@ -20,6 +20,7 @@ function Actions({
     setTables([{ index: 0, seats: 5000, seatsOccupied: 0, next: null }]);
     setGuestIndexCount(0);
     setResetClicked(false);
+    localStorage.clear();
   };
 
   return (
