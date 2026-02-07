@@ -3,6 +3,7 @@ import GuestList from "./GuestList/GuestList";
 import TableList from "./TableList/TableList";
 import UnassignedList from "./UnassignedList/UnassignedList";
 import Actions from "./Actions/Actions";
+import { fixPrevLinks } from "./utils";
 
 function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -24,6 +25,17 @@ function HomePage() {
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
+  }, []);
+
+  useEffect(() => {
+    const savedStrTables = localStorage.getItem("tables");
+    const savedGuestIndexCount = localStorage.getItem("guestIndexCount");
+    if (savedStrTables && savedGuestIndexCount) {
+      const savedTables = JSON.parse(savedStrTables);
+      fixPrevLinks(savedTables);
+      setTables(savedTables);
+      setGuestIndexCount(parseInt(savedGuestIndexCount, 10));
+    }
   }, []);
 
   return (
