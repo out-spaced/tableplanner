@@ -6,6 +6,7 @@ import Actions from "./Actions/Actions";
 import { fixPrevLinks } from "./utils";
 
 function HomePage() {
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [guestIndexCount, setGuestIndexCount] = useState<number>(0);
   const [tables, setTables] = useState<Table[]>([
@@ -36,7 +37,20 @@ function HomePage() {
       setTables(savedTables);
       setGuestIndexCount(parseInt(savedGuestIndexCount, 10));
     }
+    setIsLoaded(true);
   }, []);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    localStorage.setItem(
+      "tables",
+      JSON.stringify(tables, (key, value) => {
+        if (key === "prev") return undefined;
+        return value;
+      }),
+    );
+    localStorage.setItem("guestIndexCount", guestIndexCount.toString());
+  }, [tables, guestIndexCount, isLoaded]);
 
   return (
     <div className="main-div">
