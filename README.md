@@ -4,7 +4,7 @@ Run: clone then 'npm run dev'
 
 todo:
 
-add styling
+complete styling
 
 ticket cost input field
 
@@ -16,6 +16,6 @@ error for full table
 
 error boundary
 
-lock/unlock tables button
+lock/unlock tables button?
 
-lock/unlock guests button
+lock/unlock guests button?
