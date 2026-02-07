@@ -4,7 +4,7 @@ Run: clone then 'npm run dev'
 
 todo:
 
-complete styling
+verify data is of proper type when importing
 
 ticket cost input field
 
