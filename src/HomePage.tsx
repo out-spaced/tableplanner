@@ -8,7 +8,7 @@ function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
   const [guestIndexCount, setGuestIndexCount] = useState<number>(0);
   const [tables, setTables] = useState<Table[]>([
-    { index: 0, seats: 5000, seatsOccupied: 0, next: null }, //create unassigned table
+    { index: 0, seats: -1, seatsOccupied: 0, next: null }, //create unassigned table
   ]);
 
   useEffect(() => {

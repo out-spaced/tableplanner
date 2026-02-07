@@ -17,7 +17,7 @@ function Actions({
   const [resetClicked, setResetClicked] = useState<boolean>(false);
 
   const reset = () => {
-    setTables([{ index: 0, seats: 5000, seatsOccupied: 0, next: null }]);
+    setTables([{ index: 0, seats: -1, seatsOccupied: 0, next: null }]);
     setGuestIndexCount(0);
     setResetClicked(false);
     localStorage.clear();
