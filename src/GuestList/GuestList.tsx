@@ -95,18 +95,20 @@ function GuestList({
             <span className="bg-red-300 rounded-sm p-1 text-xs">{error}</span>
           </div>
         )}
-        <div className="list-container">
-          <ul>
-            {allGuests.map((guest) => (
-              <Guest
-                key={guest.index}
-                guestInfo={guest}
-                tables={tables}
-                setTables={setTables}
-              />
-            ))}
-          </ul>
-        </div>
+        <Activity mode={allGuests.length === 0 ? "hidden" : "visible"}>
+          <div className="list-container">
+            <ul>
+              {allGuests.map((guest) => (
+                <Guest
+                  key={guest.index}
+                  guestInfo={guest}
+                  tables={tables}
+                  setTables={setTables}
+                />
+              ))}
+            </ul>
+          </div>
+        </Activity>
       </Activity>
     </div>
   );
