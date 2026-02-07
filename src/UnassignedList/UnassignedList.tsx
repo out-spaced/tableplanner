@@ -61,7 +61,7 @@ function UnassignedList({
       onDragOver={handleDragOver}
       className={`big-component min-w-[215px] min-h-50 flex-col ${isMobile ? "" : "sticky top-[68px]"}`}
     >
-      <h2 className="component-title">Unassigned List</h2>
+      <h2 className="component-title">Unassigned</h2>
 
       <div className="flex flex-col flex-1">
         {unassigned.length === 0 && (
