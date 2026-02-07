@@ -42,14 +42,18 @@ function HomePage() {
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem(
-      "tables",
-      JSON.stringify(tables, (key, value) => {
-        if (key === "prev") return undefined;
-        return value;
-      }),
-    );
-    localStorage.setItem("guestIndexCount", guestIndexCount.toString());
+    try {
+      localStorage.setItem(
+        "tables",
+        JSON.stringify(tables, (key, value) => {
+          if (key === "prev") return undefined;
+          return value;
+        }),
+      );
+      localStorage.setItem("guestIndexCount", guestIndexCount.toString());
+    } catch (error) {
+      // do something
+    }
   }, [tables, guestIndexCount, isLoaded]);
 
   return (
