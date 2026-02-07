@@ -71,7 +71,7 @@ function GuestList({
 
   return (
     <div className="big-component flex-col">
-      <h3 className="component-title">Guest List</h3>
+      <h2 className="component-title">Guest List</h2>
       {isMobile && (
         <HideGuestList isVisible={isVisible} setIsVisible={setIsVisible} />
       )}

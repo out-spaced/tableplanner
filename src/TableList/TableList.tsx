@@ -26,6 +26,7 @@ function TableList({
 
   return (
     <div className="big-component flex-col grow md:grow-0">
+      <h2 className="component-title">Tables</h2>
       <div>
         <select
           id="table-size-select"
