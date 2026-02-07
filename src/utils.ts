@@ -62,4 +62,16 @@ const findGuest = (guestIndex: number, table: Table): Person | null => {
     return ptr;
 }
 
-export { insertGuest, insertNewGuest, removeGuestByIndex, getLastInTable, findGuest};
+  const fixPrevLinks = (tables: Table[]) => {
+    tables.forEach((table) => {
+      let prevPtr: Table | Person | null = table;
+      let currentPtr: Person | null = table.next;
+      while (currentPtr != null) {
+        currentPtr.prev = prevPtr;
+        prevPtr = currentPtr;
+        currentPtr = currentPtr.next;
+      }
+    });
+  };
+
+export { insertGuest, insertNewGuest, removeGuestByIndex, getLastInTable, findGuest, fixPrevLinks};

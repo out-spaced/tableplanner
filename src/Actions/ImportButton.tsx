@@ -1,3 +1,5 @@
+import { fixPrevLinks } from "../utils";
+
 function ImportButton({
   setTables,
   setGuestIndexCount,
@@ -32,18 +34,6 @@ function ImportButton({
       // todo: set error state and show in ui
     }
     e.target.value = "";
-  };
-
-  const fixPrevLinks = (tables: Table[]) => {
-    tables.forEach((table) => {
-      let prevPtr: Table | Person | null = table;
-      let currentPtr: Person | null = table.next;
-      while (currentPtr != null) {
-        currentPtr.prev = prevPtr;
-        prevPtr = currentPtr;
-        currentPtr = currentPtr.next;
-      }
-    });
   };
 
   return (
