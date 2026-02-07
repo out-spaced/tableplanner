@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Table from "./Table";
 
 function TableList({
@@ -22,7 +22,13 @@ function TableList({
   const addTable = () => {
     const newTable = createTable(tables.length, tableSize);
     setTables((prev: Table[]) => [...prev, newTable]);
+    localStorage.setItem("defaultSeatNum", tableSize.toString());
   };
+
+  useEffect(() => {
+    const savedSeats = localStorage.getItem("defaultSeatNum");
+    if (savedSeats) setTableSize(parseInt(savedSeats, 10));
+  }, []);
 
   return (
     <div className="big-component flex-col grow md:grow-0">
