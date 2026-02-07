@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Activity } from "react";
 import UnassignedSeat from "./UnassignedSeat";
 import { findGuest, insertGuest, removeGuestByIndex } from "../utils";
 
@@ -72,11 +72,13 @@ function UnassignedList({
             Drag here to unassign guest
           </div>
         )}
-        <ul className="list-container">
-          {unassigned.map((guest, index) => (
-            <UnassignedSeat key={index} guest={guest} />
-          ))}
-        </ul>
+        <Activity mode={unassigned.length === 0 ? "hidden" : "visible"}>
+          <ul className="list-container">
+            {unassigned.map((guest, index) => (
+              <UnassignedSeat key={index} guest={guest} />
+            ))}
+          </ul>
+        </Activity>
       </div>
     </div>
   );
