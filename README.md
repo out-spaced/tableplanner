@@ -4,17 +4,13 @@ Run: clone then 'npm run dev'
 
 todo:
 
-verify data is of proper type when importing
-
 ticket cost input field
 
 total sum collected display
 
 create google login / save data to firebase
 
-error for full table
-
-error boundary
+error for full table?
 
 lock/unlock tables button?
 
