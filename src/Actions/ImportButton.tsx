@@ -15,11 +15,15 @@ function ImportButton({
 
       reader.onload = (e) => {
         if (!e.target) return;
-        const newTables = JSON.parse(e.target.result as string);
-        const newGuestIndexCountObj = newTables.pop();
-        setGuestIndexCount(newGuestIndexCountObj.guestIndexCount);
-        fixPrevLinks(newTables);
-        setTables(newTables);
+        try {
+          const newTables = JSON.parse(e.target.result as string);
+          const newGuestIndexCountObj = newTables.pop();
+          setGuestIndexCount(newGuestIndexCountObj.guestIndexCount);
+          fixPrevLinks(newTables);
+          setTables(newTables);
+        } catch (err) {
+          alert("Error parsing file: Invalid JSON format.");
+        }
       };
 
       reader.onerror = (err) => {
@@ -32,6 +36,7 @@ function ImportButton({
       reader.readAsText(file);
     } else {
       // todo: set error state and show in ui
+      alert("Please select a valid text file.");
     }
     e.target.value = "";
   };
