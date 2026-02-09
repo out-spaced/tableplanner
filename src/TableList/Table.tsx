@@ -92,7 +92,7 @@ function Table({
       className="border-2 rounded-md border-dashed p-1 border-gray-400"
     >
       <div className="flex justify-between">
-        <h3>Table {table.index}</h3>
+        <h3 className="select-none">Table {table.index}</h3>
         <button
           onClick={() => removeTable()}
           className="text-gray-500 rounded-sm transition-colors hover:text-red-500 hover:bg-red-100"
