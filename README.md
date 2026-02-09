@@ -1,4 +1,6 @@
-Plans tables (like, physical tables) and flags if they paid or not. Works but still needs polish.
+Plans tables (like, physical tables) and flags if they paid or not.
+
+Currently hosted at: http://3.19.244.37/
 
 Run: clone then 'npm run dev'
 
