@@ -15,7 +15,7 @@
         @apply min-h-screen bg-gray-200 font-sans text-gray-900
     }
     .text-input {
-        @apply border border-gray-300 rounded-sm p-1 focus:outline-none focus:ring-2 focus:ring-blue-300 pointer-events-none
+        @apply border border-gray-300 rounded-sm p-1 focus:outline-none focus:ring-2 focus:ring-blue-300 
     }
     .component-title {
         @apply text-lg font-semibold select-none border-b border-gray-300 mb-2
