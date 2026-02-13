@@ -84,6 +84,7 @@ function GuestList({
             value={inputValue}
             onChange={(e) => handleChange(e)}
             onKeyDown={(e) => handleKeyDown(e)}
+            onDrop={(e) => e.preventDefault()}
             placeholder="Enter guest name..."
           />
           <button className="btn-default" onClick={() => addGuest()}>
