@@ -4,12 +4,12 @@ function UnassignedSeat({ guest }: { guest: Person }) {
   const [isDragging, setIsDragging] = useState(false);
 
   const handleDragStart = (e: React.DragEvent<HTMLLIElement>) => {
-    setIsDragging(true);
     e.dataTransfer.setData(
       "text",
       JSON.stringify({ index: guest.index, table: 0 }),
     );
     e.dataTransfer.effectAllowed = "move";
+    setTimeout(() => setIsDragging(true), 0);
   };
 
   return (

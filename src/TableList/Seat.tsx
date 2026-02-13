@@ -3,12 +3,12 @@ import { useState } from "react";
 function Seat({ guest }: { guest: Person }) {
   const [dragging, setDragging] = useState(false);
   const handleDragStart = (e: React.DragEvent<HTMLLIElement>) => {
-    setDragging(true);
     e.dataTransfer.setData(
       "text",
       JSON.stringify({ index: guest.index, table: guest.table }),
     );
     e.dataTransfer.effectAllowed = "move";
+    setTimeout(() => setDragging(true), 0);
   };
 
   return (
